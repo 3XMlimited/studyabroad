@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import a from '../public/a.png'
 import * as echarts from 'echarts';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import AppContext from '@/context/Context';
 import { useContext } from 'react';
 import {BsFacebook,BsTwitter,BsLinkedin} from 'react-icons/bs'
@@ -14,9 +14,22 @@ const results = () => {
 
   const funvar = useContext(AppContext);
   const { budget, cult, language, academic, location } = funvar
+  const [radius, setRadius] = useState(['30%', '50%']);
+
+  
+
+
   useEffect(() => {
     const chartDom = document.getElementById('echarts-container');
     const myChart = echarts.init(chartDom);
+    if (typeof window !== 'undefined') {
+      // Access window only on the client side
+      if (window.innerWidth > 1024) {
+        // Use different radius values for smaller screens
+        setRadius(['40%', '70%']);
+      }
+    }
+
 
     let option = {
       title: {
@@ -27,11 +40,11 @@ const results = () => {
         top: 'center',
         textStyle: {
           color: '#fff', // Set the text color
-          fontSize: '1rem', // Adjust the font size as needed
+          fontSize: '0.8rem', // Adjust the font size as needed
         },
       },
       tooltip: {
-        trigger: 'item'
+        trigger: 'item',
       },
       legend: {
         show: false, // Set this to false to hide the legend
@@ -42,23 +55,23 @@ const results = () => {
         {
           // name: 'Access From',
           type: 'pie',
-          radius: ['40%', '70%'],
+          radius: radius,
           avoidLabelOverlap: true,
           itemStyle: {
-            borderRadius: 10,
+            borderRadius: 5,
             borderColor: '#000',
-            borderWidth: 2
+            borderWidth: 1
           },
           label: {
             show: true,
             position: 'outside', // Set this to 'outside' to display names outside the chart
-            fontSize: 14,
+            fontSize: 12,
             fontWeight: 'bold',
             color: 'white'
           },
           labelLine: {
             show: true, // Set this to true to show lines connecting names to the chart
-            length: 30 // You can adjust the length of the lines as needed
+            length: 9 // You can adjust the length of the lines as needed
           },
           data: [
             { value: budget, name: 'Budget' },
@@ -80,7 +93,7 @@ const results = () => {
   }, []);
 
   return (
-    <div className='bg-black min-h-screen h-full w-full min-w-full flex flex-col mx-auto  text-white'>
+    <div  className='bg-black align-middle  lg:mx-auto min-h-screen h-full w-full min-w-full flex flex-col  text-white'>
 
       <div className="h-full w-full min-w-full flex lg:flex-row flex-col mx-auto  text-white">
         <div className="lg:ml-20 lg:w-[40vw] flex flex-row lg:flex-col justify-center align-middle content-center">
@@ -92,11 +105,11 @@ const results = () => {
           </div>
         </div>
         <div className="lg:w-[50vw] ml-10 lg:relative flex flex-col justify-center align-middle content-center">
-          <div id="echarts-container" style={{ width: '100%', height: '400px' }} />
+          <div id="echarts-container" className='lg:h-[700px] h-[350px] w-[100%] lg:w-[100%] '  />
         </div>
 
       </div>
-      <div className="mx-auto flex flex-row my-14 justify-center align-middle content-center w-full">
+      <div className="lg:mx-auto mx-4 flex flex-row my-14 justify-center align-middle content-center w-full">
         <div className="mx-auto flex flex-col justify-center align-middle content-center text-center">
           <h1 className={`text-white`} style={{ fontSize: '1.5rem' }}>Did you know that Universities in Europe and the USA offer the</h1>
           <h1 className={`text-white`} style={{ fontSize: '1.5rem' }}>opportunity to Study for Free?</h1>

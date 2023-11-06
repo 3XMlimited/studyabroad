@@ -84,7 +84,7 @@ const saveEmail =()=>{
       <div className="flex flex-col justify-center content-center items-center lg:my-auto">
         <Image alt='Universities study abroad' src={imahe}  />
         <div className={`text-white lg:hidden block lg:ml-24 my-3 ${jost.className}`}>Unlock your ideal study abroad experience with our interactive quiz. Discover the best universities to study abroad based on your preferences in Location, Academics, Language, Culture, and Budget. Start your journey today!</div>
-      <button  onClick={onOpen} style={{backgroundColor:'#49C1F0'}}  className={`w-52 rounded-md p-4  mt-5 lg:hidden block`} >
+      <button  onClick={onOpen} style={{backgroundColor:'#49C1F0'}}  className={`w-full rounded-md p-4  mt-5 lg:hidden block`} >
 <div className="text-white">
 <p>Take The Scorecard</p><p>(It only takes 1 minute)</p>
 </div>
