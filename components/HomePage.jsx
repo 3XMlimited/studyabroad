@@ -47,7 +47,7 @@ const HomePage = () => {
     // Pending
     try {
       const response = await fetch(
-        "http://localhost:5001/api/convertkit/email_collect",
+        "https://goatrack.io/api/convertkit/email_collect",
         {
           method: "POST",
           headers: {
