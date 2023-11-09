@@ -43,28 +43,10 @@ const HomePage = () => {
   };
 
   //   Start Quiz Button
-  const saveEmail = async () => {
+  const saveEmail = () => {
     // Pending
-    try {
-      const response = await fetch(
-        "http://localhost:5001/api/convertkit/email_collect",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email,
-            first_name: name,
-          }),
-        }
-      );
-      await response.json();
 
-      router.push("/questions");
-    } catch (error) {
-      console.log(error);
-    }
+    router.push("/questions");
   };
 
   return (
