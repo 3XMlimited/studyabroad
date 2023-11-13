@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Jost } from "next/font/google";
 import { IoMdArrowBack } from "react-icons/io";
 import AppContext from "@/context/Context";
-import FACEBOOK_PIXEL_2 from "./facebook/pixel-2";
+import FACEBOOK_PIXEL_2 from "../components/pixel-2";
 const jost = Jost({ subsets: ["latin"] });
 
 const allQuestions = [
