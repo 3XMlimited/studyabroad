@@ -134,7 +134,10 @@ const results = () => {
             style={{ backgroundColor: "rgb(73,193,240)" }}
             className={`w-40 mx-auto py-5 px-8 rounded-md`}
           >
-            <Link href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities">
+            <Link
+              href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
+              target="_blank"
+            >
               Get Started
             </Link>
           </button>
@@ -151,7 +154,10 @@ const results = () => {
                 Location
               </div>
               <div className="mx-3 underline" style={{ fontSize: "1.2rem" }}>
-                <a href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities">
+                <a
+                  href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
+                  target="_blank"
+                >
                   Harvard Online Business Courses
                 </a>
               </div>
@@ -187,7 +193,10 @@ const results = () => {
                 Academics
               </div>
               <div className="mx-3 underline" style={{ fontSize: "1.2rem" }}>
-                <a href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities">
+                <a
+                  href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
+                  target="_blank"
+                >
                   Free Harvard Online Business Courses
                 </a>
               </div>
@@ -228,7 +237,10 @@ const results = () => {
                 Language
               </div>
               <div className="mx-3 underline" style={{ fontSize: "1.2rem" }}>
-                <a href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities">
+                <a
+                  href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
+                  target="_blank"
+                >
                   Best Online Accredited Courses
                 </a>
               </div>
@@ -269,7 +281,10 @@ const results = () => {
                 Culture
               </div>
               <div className="mx-3 underline" style={{ fontSize: "1.2rem" }}>
-                <a href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities">
+                <a
+                  href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
+                  target="_blank"
+                >
                   Fully Funded Online Degrees
                 </a>
               </div>
@@ -309,7 +324,10 @@ const results = () => {
                 Budget
               </div>
               <div className="mx-3 underline" style={{ fontSize: "1.2rem" }}>
-                <a href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities">
+                <a
+                  href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
+                  target="_blank"
+                >
                   Free Teaching Degree Online
                 </a>
               </div>
@@ -352,16 +370,34 @@ const results = () => {
             style={{ backgroundColor: "rgb(73,193,240)" }}
             className={`w-40 mx-auto py-5 px-8 rounded-md`}
           >
-            <Link href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities">
+            <Link
+              href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
+              target="_blank"
+            >
               Get Started
             </Link>
           </button>
 
           <div className={`${jost.className} mt-12`}>Share it with friends</div>
           <div className="flex flex-row w-40 mx-auto py-5 px-8 rounded-md">
-            <BsFacebook className="mx-2" color="white" />
-            <BsTwitter className="mx-2" color="white" />
-            <BsLinkedin className="mx-2" color="white" />
+            <Link
+              href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
+              target="_blank"
+            >
+              <BsFacebook className="mx-2" color="white" />
+            </Link>
+            <Link
+              href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
+              target="_blank"
+            >
+              <BsTwitter className="mx-2" color="white" />
+            </Link>
+            <Link
+              href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
+              target="_blank"
+            >
+              <BsLinkedin className="mx-2" color="white" />
+            </Link>
           </div>
           <div className="mt-10 h-full relative right-20 flex flex-row justify-between content-between">
             <Image
@@ -372,7 +408,12 @@ const results = () => {
               src={a}
             />
             <div className="left-32 top-14 relative">
-              Study Abroad 2023 © Copyright
+              <Link
+                href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
+                target="_blank"
+              >
+                Study Abroad 2023 © Copyright
+              </Link>
             </div>
           </div>
         </div>
