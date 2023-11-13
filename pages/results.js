@@ -135,7 +135,7 @@ const results = () => {
             className={`w-40 mx-auto py-5 px-8 rounded-md`}
           >
             <Link
-              href="https://www.intl-online-universities-immo.bond/?backfill=0&lrt=1&KW1=Degree+College&KW2=College+Degree+Levels&KW3=Online+College+Degrees&KW4=Types+Of+College+Degrees&KW5=List+Of+College+Degrees&KW6=2+Year+College+Degree&domainname=0&searchbox=0&dpco=1&ptpx=1&network=facebook&subid1=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&track_id=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&kcoptimize=1&theme=MoniBook&vertical=Jobs+%26+Education&offer=Online+Degrees+PR&kw=Online+Universities"
+              href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
               target="_blank"
             >
               Get Started
@@ -155,7 +155,7 @@ const results = () => {
               </div>
               <div className="mx-3 underline" style={{ fontSize: "1.2rem" }}>
                 <a
-                  href="https://www.intl-online-universities-immo.bond/?backfill=0&lrt=1&KW1=Degree+College&KW2=College+Degree+Levels&KW3=Online+College+Degrees&KW4=Types+Of+College+Degrees&KW5=List+Of+College+Degrees&KW6=2+Year+College+Degree&domainname=0&searchbox=0&dpco=1&ptpx=1&network=facebook&subid1=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&track_id=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&kcoptimize=1&theme=MoniBook&vertical=Jobs+%26+Education&offer=Online+Degrees+PR&kw=Online+Universities"
+                  href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
                   target="_blank"
                 >
                   Harvard Online Business Courses
@@ -194,7 +194,7 @@ const results = () => {
               </div>
               <div className="mx-3 underline" style={{ fontSize: "1.2rem" }}>
                 <a
-                  href="https://www.intl-online-universities-immo.bond/?backfill=0&lrt=1&KW1=Degree+College&KW2=College+Degree+Levels&KW3=Online+College+Degrees&KW4=Types+Of+College+Degrees&KW5=List+Of+College+Degrees&KW6=2+Year+College+Degree&domainname=0&searchbox=0&dpco=1&ptpx=1&network=facebook&subid1=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&track_id=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&kcoptimize=1&theme=MoniBook&vertical=Jobs+%26+Education&offer=Online+Degrees+PR&kw=Online+Universities"
+                  href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
                   target="_blank"
                 >
                   Free Harvard Online Business Courses
@@ -238,7 +238,7 @@ const results = () => {
               </div>
               <div className="mx-3 underline" style={{ fontSize: "1.2rem" }}>
                 <a
-                  href="https://www.intl-online-universities-immo.bond/?backfill=0&lrt=1&KW1=Degree+College&KW2=College+Degree+Levels&KW3=Online+College+Degrees&KW4=Types+Of+College+Degrees&KW5=List+Of+College+Degrees&KW6=2+Year+College+Degree&domainname=0&searchbox=0&dpco=1&ptpx=1&network=facebook&subid1=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&track_id=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&kcoptimize=1&theme=MoniBook&vertical=Jobs+%26+Education&offer=Online+Degrees+PR&kw=Online+Universities"
+                  href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
                   target="_blank"
                 >
                   Best Online Accredited Courses
@@ -282,7 +282,7 @@ const results = () => {
               </div>
               <div className="mx-3 underline" style={{ fontSize: "1.2rem" }}>
                 <a
-                  href="https://www.intl-online-universities-immo.bond/?backfill=0&lrt=1&KW1=Degree+College&KW2=College+Degree+Levels&KW3=Online+College+Degrees&KW4=Types+Of+College+Degrees&KW5=List+Of+College+Degrees&KW6=2+Year+College+Degree&domainname=0&searchbox=0&dpco=1&ptpx=1&network=facebook&subid1=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&track_id=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&kcoptimize=1&theme=MoniBook&vertical=Jobs+%26+Education&offer=Online+Degrees+PR&kw=Online+Universities"
+                  href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
                   target="_blank"
                 >
                   Fully Funded Online Degrees
@@ -325,7 +325,7 @@ const results = () => {
               </div>
               <div className="mx-3 underline" style={{ fontSize: "1.2rem" }}>
                 <a
-                  href="https://www.intl-online-universities-immo.bond/?backfill=0&lrt=1&KW1=Degree+College&KW2=College+Degree+Levels&KW3=Online+College+Degrees&KW4=Types+Of+College+Degrees&KW5=List+Of+College+Degrees&KW6=2+Year+College+Degree&domainname=0&searchbox=0&dpco=1&ptpx=1&network=facebook&subid1=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&track_id=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&kcoptimize=1&theme=MoniBook&vertical=Jobs+%26+Education&offer=Online+Degrees+PR&kw=Online+Universities"
+                  href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
                   target="_blank"
                 >
                   Free Teaching Degree Online
@@ -371,7 +371,7 @@ const results = () => {
             className={`w-40 mx-auto py-5 px-8 rounded-md`}
           >
             <Link
-              href="https://www.intl-online-universities-immo.bond/?backfill=0&lrt=1&KW1=Degree+College&KW2=College+Degree+Levels&KW3=Online+College+Degrees&KW4=Types+Of+College+Degrees&KW5=List+Of+College+Degrees&KW6=2+Year+College+Degree&domainname=0&searchbox=0&dpco=1&ptpx=1&network=facebook&subid1=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&track_id=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&kcoptimize=1&theme=MoniBook&vertical=Jobs+%26+Education&offer=Online+Degrees+PR&kw=Online+Universities"
+              href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
               target="_blank"
             >
               Get Started
@@ -381,19 +381,19 @@ const results = () => {
           <div className={`${jost.className} mt-12`}>Share it with friends</div>
           <div className="flex flex-row w-40 mx-auto py-5 px-8 rounded-md">
             <Link
-              href="https://www.intl-online-universities-immo.bond/?backfill=0&lrt=1&KW1=Degree+College&KW2=College+Degree+Levels&KW3=Online+College+Degrees&KW4=Types+Of+College+Degrees&KW5=List+Of+College+Degrees&KW6=2+Year+College+Degree&domainname=0&searchbox=0&dpco=1&ptpx=1&network=facebook&subid1=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&track_id=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&kcoptimize=1&theme=MoniBook&vertical=Jobs+%26+Education&offer=Online+Degrees+PR&kw=Online+Universities"
+              href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
               target="_blank"
             >
               <BsFacebook className="mx-2" color="white" />
             </Link>
             <Link
-              href="https://www.intl-online-universities-immo.bond/?backfill=0&lrt=1&KW1=Degree+College&KW2=College+Degree+Levels&KW3=Online+College+Degrees&KW4=Types+Of+College+Degrees&KW5=List+Of+College+Degrees&KW6=2+Year+College+Degree&domainname=0&searchbox=0&dpco=1&ptpx=1&network=facebook&subid1=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&track_id=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&kcoptimize=1&theme=MoniBook&vertical=Jobs+%26+Education&offer=Online+Degrees+PR&kw=Online+Universities"
+              href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
               target="_blank"
             >
               <BsTwitter className="mx-2" color="white" />
             </Link>
             <Link
-              href="https://www.intl-online-universities-immo.bond/?backfill=0&lrt=1&KW1=Degree+College&KW2=College+Degree+Levels&KW3=Online+College+Degrees&KW4=Types+Of+College+Degrees&KW5=List+Of+College+Degrees&KW6=2+Year+College+Degree&domainname=0&searchbox=0&dpco=1&ptpx=1&network=facebook&subid1=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&track_id=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&kcoptimize=1&theme=MoniBook&vertical=Jobs+%26+Education&offer=Online+Degrees+PR&kw=Online+Universities"
+              href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
               target="_blank"
             >
               <BsLinkedin className="mx-2" color="white" />
@@ -409,7 +409,7 @@ const results = () => {
             />
             <div className="left-32 top-14 relative">
               <Link
-                href="https://www.intl-online-universities-immo.bond/?backfill=0&lrt=1&KW1=Degree+College&KW2=College+Degree+Levels&KW3=Online+College+Degrees&KW4=Types+Of+College+Degrees&KW5=List+Of+College+Degrees&KW6=2+Year+College+Degree&domainname=0&searchbox=0&dpco=1&ptpx=1&network=facebook&subid1=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&track_id=b5fcc9c66bae81c3e5c44c00ac700012a28a4c1e1ec94af4826df00a0d66a260&kcoptimize=1&theme=MoniBook&vertical=Jobs+%26+Education&offer=Online+Degrees+PR&kw=Online+Universities"
+                href="https://111jgx.gpvqttk.com/?dpco=1&network=facebook&site=hispanodatos.com&adtitle=Online+Universities"
                 target="_blank"
               >
                 Study Abroad 2023 © Copyright
