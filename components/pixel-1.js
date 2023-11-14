@@ -1,8 +1,9 @@
 import React from "react";
 
-export default ({ track }) => (
+export default () => (
   // console.log(track)
   <React.Fragment>
+    <script>var newURL =window.location.pathname</script>
     <script
       dangerouslySetInnerHTML={{
         __html: `!function(f,b,e,v,n,t,s)
@@ -13,8 +14,8 @@ export default ({ track }) => (
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '227423133626581');
-            fbq('track', 'PageView');`,
+           fbq('init', '227423133626581');fbq('track', 'PageView');
+         `,
       }}
     />
     <noscript

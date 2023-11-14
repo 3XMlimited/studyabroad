@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Jost } from "next/font/google";
 import { IoMdArrowBack } from "react-icons/io";
 import AppContext from "@/context/Context";
-import FACEBOOK_PIXEL_2 from "../components/pixel-2";
+// import FACEBOOK_PIXEL_2 from "../components/pixel-2";
 const jost = Jost({ subsets: ["latin"] });
 
 const allQuestions = [
@@ -32,7 +32,7 @@ const Questions = () => {
 
   return (
     <div className="bg-black min-h-screen h-full w-full min-w-full">
-      <FACEBOOK_PIXEL_2 />
+      {/* <FACEBOOK_PIXEL_2 /> */}
       <div className="mx-2 lg:mx-auto justify-center align-middle my-auto">
         <div
           className={`lg:w-[50vw] flex flex-col justify-center mx-auto py-auto h-full align-middle content-center`}

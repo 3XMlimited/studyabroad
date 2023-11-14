@@ -12,9 +12,17 @@ export default () => (
                 t.src=v;s=b.getElementsByTagName(e)[0];
                 s.parentNode.insertBefore(t,s)}(window, document,'script',
                 'https://connect.facebook.net/en_US/fbevents.js');
-                fbq('init', '227423133626581');
-                fbq('track', 'PageView');
-                fbq('track', 'Lead');`,
+                x=function(){return window.location.pathname.split('/')[1]}
+                pathname=x()
+     
+                if(pathname==='studyabroad' ||pathname === 'questions' ) {
+                  fbq('init', '227423133626581');
+                  fbq('track', 'PageView');
+                  if(pathname === 'questions'){
+                     fbq('track', 'Lead');
+                }
+                }
+               `,
       }}
     />
     <noscript
