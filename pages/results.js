@@ -167,7 +167,7 @@ const results = () => {
   }, [data]);
   console.log(data);
   return (
-    <div className="bg-black min-h-screen h-full w-full flex flex-col items-center text-white p-[20px] gap-[40px]">
+    <div className="bg-black min-h-screen h-full w-full flex flex-col items-center text-white p-[20px] gap-[40px] overflow-x-hidden">
       <div className="h-full w-full flex flex-col items-center text-white lg:min-h-screen lg:grid lg:grid-cols-2 lg:px-[50px]">
         <div className="flex flex-col items-start">
           <div className="relative h-[40px] w-[40px] lg:h-[150px] lg:w-[150px] rounded-lg overflow-hidden">
