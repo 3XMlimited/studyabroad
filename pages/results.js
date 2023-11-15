@@ -66,10 +66,8 @@ const results = () => {
   }, []);
   useEffect(() => {
     // if (answers[0] === null || answers === 0) {
-
     //   let value;
     //   // Get the value from local storage if it exists
-
     //   value = localStorage.getItem("data") || "";
     //   if (value) {
     //     value = JSON.parse(value);
@@ -97,7 +95,7 @@ const results = () => {
       }
     }
 
-    window.onresize = function() {
+    window.onresize = function () {
       myChart.resize();
     };
 
@@ -142,7 +140,7 @@ const results = () => {
             fontSize: 12,
             fontWeight: "bold",
             color: "white",
-            overflow: 'break',
+            overflow: "break",
           },
           labelLine: {
             show: true, // Set this to true to show lines connecting names to the chart
@@ -173,15 +171,27 @@ const results = () => {
       <div className="h-full w-full flex flex-col items-center text-white lg:min-h-screen lg:grid lg:grid-cols-2 lg:px-[50px]">
         <div className="flex flex-col items-start">
           <div className="relative h-[40px] w-[40px] lg:h-[150px] lg:w-[150px] rounded-lg overflow-hidden">
-            <Image src={data?.logo} alt="Logo" layout='fill' objectFit='contain' />
+            <Image
+              src={data?.logo}
+              alt="Logo"
+              layout="fill"
+              objectFit="contain"
+            />
           </div>
-          <h1 className={`${jost.className} leading-tight text-left`} style={{ fontSize: "2.1rem" }}>
+          <h1
+            className={`${jost.className} leading-tight text-left`}
+            style={{ fontSize: "2.1rem" }}
+          >
             Congratulations on Completing the Quiz!
           </h1>
           <p className={`${jost.className} my-[10px] leading-normal`}>
             Your full report has been been generated
           </p>
-          <p className={`${jost.className} leading-normal whitespace-break-spaces`}>{data?.thankyou_content}</p>
+          <p
+            className={`${jost.className} leading-normal whitespace-break-spaces`}
+          >
+            {data?.thankyou_content}
+          </p>
         </div>
 
         <div
@@ -202,7 +212,7 @@ const results = () => {
           </div>
 
           <div
-            className={`text-white whitespace-break-spaces ${jost.className} w-full flex items-center text-center`}
+            className={`text-white whitespace-break-spaces ${jost.className} w-full flex items-center `}
           >
             {data?.question_content}
           </div>
@@ -221,29 +231,34 @@ const results = () => {
           {data?.domains?.map(
             (r, i) =>
               r !== "" && (
-                <a href={`${data?.domains_url[i]}`} className="w-full bg-[rgb(73,193,240)] underline text-[1.2rem] rounded-md p-4 lg:p-8">{r}</a>
-              //   <div
-              //     style={{ backgroundColor: "rgb(73,193,240)" }}
-              //     className="w-full flex rounded-md"
-              //   >
-              //     {/* <div className="flex flex-col lg:p-8 p-4 justify-start">
-              //   <div className="mx-3" style={{ fontSize: "1.2rem" }}>
-              //     Your Score
-              //   </div>
-              //   <div
-              //     className="mx-3 text-red-600 font-bold"
-              //     style={{ fontSize: "1.5rem" }}
-              //   >
-              //     {language > 0 ? "50%" : "10%"}
-              //   </div>
-              //   <div
-              //     className={`mx-3 ${"bg-red-400"} rounded-md`}
-              //     style={{ fontSize: "1.2rem" }}
-              //   >
-              //     medium
-              //   </div>
-              // </div> */}
-              //   </div>
+                <a
+                  href={`${data?.domains_url[i]}`}
+                  className="w-full bg-[rgb(73,193,240)] underline text-[1.2rem] rounded-md p-4 lg:p-8"
+                >
+                  {r}
+                </a>
+                //   <div
+                //     style={{ backgroundColor: "rgb(73,193,240)" }}
+                //     className="w-full flex rounded-md"
+                //   >
+                //     {/* <div className="flex flex-col lg:p-8 p-4 justify-start">
+                //   <div className="mx-3" style={{ fontSize: "1.2rem" }}>
+                //     Your Score
+                //   </div>
+                //   <div
+                //     className="mx-3 text-red-600 font-bold"
+                //     style={{ fontSize: "1.5rem" }}
+                //   >
+                //     {language > 0 ? "50%" : "10%"}
+                //   </div>
+                //   <div
+                //     className={`mx-3 ${"bg-red-400"} rounded-md`}
+                //     style={{ fontSize: "1.2rem" }}
+                //   >
+                //     medium
+                //   </div>
+                // </div> */}
+                //   </div>
               )
           )}
 
