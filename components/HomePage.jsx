@@ -183,7 +183,7 @@ const HomePage = ({ topic }) => {
               </h3>
               {/*  Next Components */}
               <div
-                className={`text-white hidden lg:block lg:ml-24 my-3 ${jost.className}`}
+                className={`text-white whitespace-break-spaces hidden lg:block lg:ml-24 my-3 ${jost.className}`}
               >
                 {data?.content}
               </div>
@@ -208,12 +208,9 @@ const HomePage = ({ topic }) => {
             <div className="flex flex-col justify-center content-center items-center lg:my-auto">
               <Image alt="image" src={data?.image} width={600} height={600} />
               <div
-                className={`text-white lg:hidden block lg:ml-24 my-3 ${jost.className}`}
+                className={`text-white whitespace-break-spaces lg:hidden block lg:ml-24 my-3 ${jost.className}`}
               >
-                Unlock your ideal study abroad experience with our interactive
-                quiz. Discover the best universities to study abroad based on
-                your preferences in Location, Academics, Language, Culture, and
-                Budget. Start your journey today!
+                {data?.content}
               </div>
               <button
                 onClick={onOpen}

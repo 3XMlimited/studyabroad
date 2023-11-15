@@ -65,27 +65,25 @@ const results = () => {
     // }
   }, []);
   useEffect(() => {
-    console.log("ansers", answers);
-    if (answers[0] === null || answers === 0) {
-      console.log("back");
+    // if (answers[0] === null || answers === 0) {
 
-      let value;
-      // Get the value from local storage if it exists
+    //   let value;
+    //   // Get the value from local storage if it exists
 
-      value = localStorage.getItem("data") || "";
-      if (value) {
-        value = JSON.parse(value);
-        value = value.data;
-        if (value && value.topic) {
-          console.log(value?.topic);
-          router.push(`/${value?.topic}`);
-        } else {
-          router.push(`/`);
-        }
-      } else {
-        router.push(`/`);
-      }
-    }
+    //   value = localStorage.getItem("data") || "";
+    //   if (value) {
+    //     value = JSON.parse(value);
+    //     value = value.data;
+    //     if (value && value.topic) {
+    //       console.log(value?.topic);
+    //       router.push(`/${value?.topic}`);
+    //     } else {
+    //       router.push(`/`);
+    //     }
+    //   } else {
+    //     router.push(`/`);
+    //   }
+    // }
   }, []);
 
   useEffect(() => {
@@ -98,6 +96,10 @@ const results = () => {
         setRadius(["40%", "70%"]);
       }
     }
+
+    window.onresize = function() {
+      myChart.resize();
+    };
 
     let option = {
       title: {
@@ -140,6 +142,7 @@ const results = () => {
             fontSize: 12,
             fontWeight: "bold",
             color: "white",
+            overflow: 'break',
           },
           labelLine: {
             show: true, // Set this to true to show lines connecting names to the chart
@@ -148,11 +151,11 @@ const results = () => {
           // data: data?.chart,
           data: data?.chart,
           // data: [
-          //   { value: budget, name: "Budget1" },
-          //   { value: location, name: "Location" },
-          //   { value: academic, name: "Academics" },
-          //   { value: language, name: "Language" },
-          //   { value: cult, name: "Culture" },
+          //   { value: 1048, name: 'Search Engine' },
+          //   { value: 735, name: 'Direct' },
+          //   { value: 580, name: 'Email' },
+          //   { value: 484, name: 'Union Ads' },
+          //   { value: 300, name: 'Video Ads' }
           // ],
         },
       ],
@@ -166,65 +169,47 @@ const results = () => {
   }, [data]);
   console.log(data);
   return (
-    <div className="bg-black align-middle  lg:mx-auto min-h-screen h-full w-full min-w-full flex flex-col  text-white">
-      <div className="h-full w-full min-w-full flex lg:flex-row flex-col mx-auto  text-white">
-        <div className="lg:ml-20 lg:w-[40vw] flex flex-row lg:flex-col justify-center align-middle content-center">
-          <div className="mx-4">
-            <Image src={data?.logo} alt="Logo" width={200} height={200} />
-            <h1 className={`${jost.className}`} style={{ fontSize: "2.1rem" }}>
-              Congratulations on Completing the Quiz!
-            </h1>
-            <p className={`${jost.className} my-2`}>
-              Your full report has been been generated
-            </p>
-            <p className={`${jost.className}`}>{data?.thankyou_content}</p>
+    <div className="bg-black min-h-screen h-full w-full flex flex-col items-center text-white p-[20px] gap-[40px]">
+      <div className="h-full w-full flex flex-col items-center text-white lg:min-h-screen lg:grid lg:grid-cols-2 lg:px-[50px]">
+        <div className="flex flex-col items-start">
+          <div className="relative h-[40px] w-[40px] lg:h-[150px] lg:w-[150px] rounded-lg overflow-hidden">
+            <Image src={data?.logo} alt="Logo" layout='fill' objectFit='contain' />
           </div>
+          <h1 className={`${jost.className} leading-tight text-left`} style={{ fontSize: "2.1rem" }}>
+            Congratulations on Completing the Quiz!
+          </h1>
+          <p className={`${jost.className} my-[10px] leading-normal`}>
+            Your full report has been been generated
+          </p>
+          <p className={`${jost.className} leading-normal whitespace-break-spaces`}>{data?.thankyou_content}</p>
         </div>
-        <div className="lg:w-[50vw] ml-10 lg:relative flex flex-col justify-center align-middle content-center">
-          <div
-            id="echarts-container"
-            className="lg:h-[700px] h-[350px] w-[100%] lg:w-[100%] "
-          />
-        </div>
+
+        <div
+          id="echarts-container"
+          className="h-full min-h-[350px] w-full min-w-[200px]"
+        />
       </div>
-      <div className="lg:mx-auto mx-4 flex flex-row my-14 justify-center align-middle content-center w-full">
-        <div className=" mx-auto flex flex-col justify-center align-middle content-center text-center ">
-          <div className="w-full   flex justify-center ">
+
+      <div className="h-fit w-full max-w-[800px] flex justify-center">
+        <div className="h-fit w-full flex flex-col items-center gap-[20px]">
+          <div className="w-full flex justify-center">
             <h1
-              className={`text-white mt-10   max-w-[1000px]`}
+              className={`${jost.className} text-white text-left`}
               style={{ fontSize: "1.5rem" }}
             >
-              {/* Did you know that Universities in Europe and the USA offer the
-              opportunity to Study for Free? */}
               {data?.question_for_link}
-              {/* ?.split(" ")
-                .slice(0, data?.question_for_link?.split(" ").length - 5)
-                .toString()
-                .replaceAll(",", " ")} */}
             </h1>
           </div>
-          {/* <div className="w-full  flex justify-center">
-            <h1 className={`text-white `} style={{ fontSize: "1.5rem" }}>
-              {data?.question_for_link
-              ?.split(" ")
-                .slice(
-                  data?.question_for_link?.split(" ").length - 5,
-                  data?.question_for_link?.split(" ").length
-                )
-                .toString()
-                .replaceAll(",", " ")}
-            </h1>
-          </div> */}
 
           <div
-            className={`text-white my-20 ${jost.className} w-full flex justify-center `}
+            className={`text-white whitespace-break-spaces ${jost.className} w-full flex items-center text-center`}
           >
-            <p className="  max-w-[800px]">{data?.question_content}</p>
+            {data?.question_content}
           </div>
 
           <button
             style={{ backgroundColor: "rgb(73,193,240)" }}
-            className={`w-40 mx-auto py-5 px-8 rounded-md`}
+            className={`w-fit py-5 px-8 rounded-md`}
           >
             {data?.button_link && (
               <Link href={data?.button_link} target="_blank">
@@ -236,93 +221,57 @@ const results = () => {
           {data?.domains?.map(
             (r, i) =>
               r !== "" && (
-                <div
-                  style={{ backgroundColor: "rgb(73,193,240)" }}
-                  className="flex justify-between my-4 mt-10 mx-3 lg:flex-row flex-col rounded-md"
-                >
-                  <div className="rounded-md lg:p-8 p-4 justify-between lg:space-y-7 content-between">
-                    <div
-                      className={`mx-3 lg:text-left text-center`}
-                      style={{ fontSize: "1.2rem" }}
-                    >
-                      {/* Location */}
-                    </div>
-                    <div
-                      className="mx-3 underline"
-                      style={{ fontSize: "1.2rem" }}
-                    >
-                      <a href={`${data?.domains_url[i]}`}>{r}</a>
-                    </div>
-                  </div>
-                  {/* <div className="flex flex-col lg:p-8 p-4 justify-start">
-                <div className="mx-3" style={{ fontSize: "1.2rem" }}>
-                  Your Score
-                </div>
-                <div
-                  className="mx-3 text-red-600 font-bold"
-                  style={{ fontSize: "1.5rem" }}
-                >
-                  {language > 0 ? "50%" : "10%"}
-                </div>
-                <div
-                  className={`mx-3 ${"bg-red-400"} rounded-md`}
-                  style={{ fontSize: "1.2rem" }}
-                >
-                  medium
-                </div>
-              </div> */}
-                </div>
+                <a href={`${data?.domains_url[i]}`} className="w-full bg-[rgb(73,193,240)] underline text-[1.2rem] rounded-md p-4 lg:p-8">{r}</a>
+              //   <div
+              //     style={{ backgroundColor: "rgb(73,193,240)" }}
+              //     className="w-full flex rounded-md"
+              //   >
+              //     {/* <div className="flex flex-col lg:p-8 p-4 justify-start">
+              //   <div className="mx-3" style={{ fontSize: "1.2rem" }}>
+              //     Your Score
+              //   </div>
+              //   <div
+              //     className="mx-3 text-red-600 font-bold"
+              //     style={{ fontSize: "1.5rem" }}
+              //   >
+              //     {language > 0 ? "50%" : "10%"}
+              //   </div>
+              //   <div
+              //     className={`mx-3 ${"bg-red-400"} rounded-md`}
+              //     style={{ fontSize: "1.2rem" }}
+              //   >
+              //     medium
+              //   </div>
+              // </div> */}
+              //   </div>
               )
           )}
 
-          <div className="max-w-[1000px]">
-            <h1 className={`text-white mt-10`} style={{ fontSize: "1.5rem" }}>
-              {data?.question_for_link}
-              {/* ?.split(" ")
-                .slice(0, data?.question_for_link?.split(" ").length - 5)
-                .toString()
-                .replaceAll(",", " ")} */}
-            </h1>
+          <div className="h-fit w-full flex flex-col items-center my-6">
+            <div className={`${jost.className}`}>Share it with friends</div>
+            <div className="flex flex-row w-40 py-5 px-8 rounded-md">
+              {data?.button_link && (
+                <>
+                  <Link href={data?.button_link} target="_blank">
+                    <BsFacebook className="mx-2" color="white" />
+                  </Link>
+                  <Link href={data?.button_link} target="_blank">
+                    <BsTwitter className="mx-2" color="white" />
+                  </Link>
+                  <BsLinkedin className="mx-2" color="white" />
+                </>
+              )}
+            </div>
           </div>
-
-          <p className={`text-white my-10 max-w-[800px] ${jost.className}`}>
-            {data?.question_content}
-          </p>
-
-          <button
-            style={{ backgroundColor: "rgb(73,193,240)" }}
-            className={`w-40 mx-auto py-5 px-8 rounded-md`}
-          >
-            {data?.button_link && (
-              <Link href={data?.button_link} target="_blank">
-                {data?.button_name}
-              </Link>
-            )}
-          </button>
-
-          <div className={`${jost.className} mt-12`}>Share it with friends</div>
-          <div className="flex flex-row w-40 mx-auto py-5 px-8 rounded-md">
-            {data?.button_link && (
-              <>
-                <Link href={data?.button_link} target="_blank">
-                  <BsFacebook className="mx-2" color="white" />
-                </Link>
-                <Link href={data?.button_link} target="_blank">
-                  <BsTwitter className="mx-2" color="white" />
-                </Link>
-                <BsLinkedin className="mx-2" color="white" />
-              </>
-            )}
-          </div>
-          <div className="mt-10 h-full relative right-20 flex flex-row justify-between content-between">
+          <div className="h-fit w-full flex flex-row items-center justify-between gap-[10px]">
             <Image
-              height={150}
-              width={150}
-              className="relative bottom-5  right-20"
+              height={40}
+              width={40}
+              className="rounded-md"
               alt="logo"
               src={data?.logo}
             />
-            <div className="left-32 top-14 relative">
+            <div className="relative">
               {data?.button_link && (
                 <Link href={data?.button_link} target="_blank">
                   {data?.topic?.toUpperCase()} 2023 © Copyright

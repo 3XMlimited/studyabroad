@@ -74,17 +74,19 @@ const Questions = () => {
 
   return (
     <div className="bg-black min-h-screen h-full w-full min-w-full">
-      <div className="mx-2 lg:mx-auto justify-center align-middle my-auto">
+      <div className="lg:mx-auto justify-center align-middle p-[20px]">
         <div
           className={`lg:w-[50vw] flex flex-col justify-center mx-auto py-auto h-full align-middle content-center`}
         >
-          <Image width="225" height="225" src={data?.logo} alt="Hat" />
+          <div className="relative h-[40px] w-[40px] sm:h-[225px] sm:w-[225px]">
+            <Image src={data?.logo} alt="Hat" layout='fill' objectFit='contain' />
+          </div>
           {answeredCount > 0 && (
             <button
               onClick={goBack}
-              className={`text-white ${jost.className}  relative lg:right-96 right-40 md:right-96`}
+              className={`text-white ${jost.className} mt-[20px]`}
             >
-              <div className="flex justify-center content-center align-middle">
+              <div className="flex">
                 <IoMdArrowBack
                   className="inline "
                   size={"1.2rem"}
@@ -107,7 +109,7 @@ const Questions = () => {
               onClick={() => {
                 getAnswer("Yes");
               }}
-              className="hover:bg-cyan-700 mx-2 px-16 bg-cyan-500 text-white font-bold py-2 rounded"
+              className="hover:bg-cyan-700 px-16 bg-cyan-500 text-white font-bold py-2 rounded"
             >
               <p>Yes</p>
             </button>
