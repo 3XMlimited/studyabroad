@@ -212,7 +212,7 @@ const results = () => {
           </div>
 
           <div
-            className={`text-white whitespace-break-spaces ${jost.className} w-full flex items-center `}
+            className={`text-white whitespace-break-spaces ${jost.className} w-full flex items-center text-left lg:text-center`}
           >
             {data?.question_content}
           </div>
