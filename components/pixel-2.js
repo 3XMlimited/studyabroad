@@ -12,13 +12,15 @@ export default () => (
                 t.src=v;s=b.getElementsByTagName(e)[0];
                 s.parentNode.insertBefore(t,s)}(window, document,'script',
                 'https://connect.facebook.net/en_US/fbevents.js');
-                x=function(){return window.location.pathname.split('/')[1]}
+                x=function(){return window.location.pathname}
                 pathname=x()
-     
-                if(pathname==='studyabroad' ||pathname === 'questions' ) {
-                  fbq('init', '227423133626581');
+                y=function(){n=localStorage.getItem("data")|| "" ;n= JSON.parse(n);return [n?.data.topic,n?.data.pixel_id] ; }
+                data = y()
+            
+                if(pathname==="/"+data[0] ||pathname === '/questions/'+ data[0] ) {
+                  fbq('init', data[1]);
                   fbq('track', 'PageView');
-                  if(pathname === 'questions'){
+                  if(pathname === '/questions/'+ data[0]){
                      fbq('track', 'Lead');
                 }
                 }
@@ -27,8 +29,11 @@ export default () => (
     />
     <noscript
       dangerouslySetInnerHTML={{
-        __html: `<img height="1" width="1" style="display:none"
-                    src="https://www.facebook.com/tr?id=227423133626581&ev=PageView&noscript=1"
+        __html: `
+           y=function(){n=localStorage.getItem("data")|| "" ;n= JSON.parse(n);return n.data.pixel_id }
+           id = y()
+        <img height="1" width="1" style="display:none"
+                    src="https://www.facebook.com/tr?id="+id+"&ev=PageView&noscript=1"
                 />`,
       }}
     />

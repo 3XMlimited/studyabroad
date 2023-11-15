@@ -1,30 +1,61 @@
-"use client";
-import React, { useContext, useState } from "react";
-import a from "../public/a.png";
+import React, { useContext, useState, useEffect } from "react";
+// import a from "../../public/a.png";
 import Image from "next/image";
 import { Jost } from "next/font/google";
 import { IoMdArrowBack } from "react-icons/io";
 import AppContext from "@/context/Context";
-// import FACEBOOK_PIXEL_2 from "../components/pixel-2";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 const jost = Jost({ subsets: ["latin"] });
 
-const allQuestions = [
-  "Do you want to study in a country where English is the primary language spoken ?",
-  `Is studying in a big city important to you ?`,
-  `Do you want to study at a university with a prestigious reputation for academics ?`,
-  `Do you prefer universities with a wide range of academic disciplines ?`,
-  `Is improving your language skills a priority in your study abroad program ?`,
-  `Are you open to studying in a country where English is not the primary language? `,
-  `Are you open to learning about different customs and traditions ?`,
-  `Are you excited about experiencing festivals and events unique to other countries ?`,
-  `Is cost an important factor for you when choosing a study abroad program ?`,
-  `Are you willing to take on part-time work to supplement your study abroad budget ?`,
-  `Are you open to exploring scholarship opportunities to help fund your study abroad experience ?`,
-  `Did you know that some Universities in Europe and the USA offer the opportunity to Study for Free ?`,
-];
+// const allQuestions = [
+//   "Do you want to study in a country where English is the primary language spoken ?",
+//   `Is studying in a big city important to you ?`,
+//   `Do you want to study at a university with a prestigious reputation for academics ?`,
+//   `Do you prefer universities with a wide range of academic disciplines ?`,
+//   `Is improving your language skills a priority in your study abroad program ?`,
+//   `Are you open to studying in a country where English is not the primary language? `,
+//   `Are you open to learning about different customs and traditions ?`,
+//   `Are you excited about experiencing festivals and events unique to other countries ?`,
+//   `Is cost an important factor for you when choosing a study abroad program ?`,
+//   `Are you willing to take on part-time work to supplement your study abroad budget ?`,
+//   `Are you open to exploring scholarship opportunities to help fund your study abroad experience ?`,
+//   `Did you know that some Universities in Europe and the USA offer the opportunity to Study for Free ?`,
+// ];
 
 const Questions = () => {
+  const [data, setData] = useState({});
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    let value;
+    // Get the value from local storage if it exists
+    value = localStorage.getItem("data") || "";
+    value = JSON.parse(value);
+    value = value.data;
+
+    let questionsList = [];
+    value.question_list.map((r) => questionsList.push(r.value.question));
+
+    value.allQuestions = questionsList;
+
+    setData(value);
+  }, []);
+
+  // localStorage.getItem("data");
+  // data = JSON.parse(data);
+  // console.log(data);
+  // console.log("data", data);
+
+  useEffect(() => {
+    if (pathname && pathname.split("/")[2] !== data.topic) {
+      router.push("/");
+    }
+  }, [pathname]);
+
   const funvar = useContext(AppContext);
+
   const { answeredCount, getAnswer, totalQuestions, goBack } = funvar;
   const completionPercentage = ((answeredCount / totalQuestions) * 100).toFixed(
     2
@@ -32,12 +63,11 @@ const Questions = () => {
 
   return (
     <div className="bg-black min-h-screen h-full w-full min-w-full">
-      {/* <FACEBOOK_PIXEL_2 /> */}
       <div className="mx-2 lg:mx-auto justify-center align-middle my-auto">
         <div
           className={`lg:w-[50vw] flex flex-col justify-center mx-auto py-auto h-full align-middle content-center`}
         >
-          <Image height={"4rem"} width={"4rem"} src={a} alt="Hat" />
+          <Image width="225" height="225" src={data?.logo} alt="Hat" />
           {answeredCount > 0 && (
             <button
               onClick={goBack}
@@ -59,7 +89,7 @@ const Questions = () => {
             style={{ fontSize: "2rem" }}
             className={`text-white ${jost.className} mt-5`}
           >
-            {allQuestions[answeredCount]}
+            {data.allQuestions && data.allQuestions[answeredCount]}
           </h1>
           <div className="flex align-middle h-full w-full mt-5">
             <button

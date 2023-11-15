@@ -1,3 +1,4 @@
+// import HomePage from '@/components/HomePage';
 import HomePage from "@/components/Home";
 import { Inter } from "next/font/google";
 
