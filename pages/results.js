@@ -73,11 +73,15 @@ const results = () => {
       // Get the value from local storage if it exists
 
       value = localStorage.getItem("data") || "";
-      value = JSON.parse(value);
-      value = value.data;
-      if (value && value.topic) {
-        console.log(value?.topic);
-        router.push(`/${value?.topic}`);
+      if (value) {
+        value = JSON.parse(value);
+        value = value.data;
+        if (value && value.topic) {
+          console.log(value?.topic);
+          router.push(`/${value?.topic}`);
+        } else {
+          router.push(`/`);
+        }
       } else {
         router.push(`/`);
       }

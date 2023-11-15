@@ -32,27 +32,38 @@ const Questions = () => {
     let value;
     // Get the value from local storage if it exists
     value = localStorage.getItem("data") || "";
-    value = JSON.parse(value);
-    value = value.data;
+    if (value) {
+      value = JSON.parse(value);
+      value = value.data;
 
-    let questionsList = [];
-    value.question_list.map((r) => questionsList.push(r.value.question));
+      let questionsList = [];
+      value.question_list.map((r) => questionsList.push(r.value.question));
 
-    value.allQuestions = questionsList;
+      value.allQuestions = questionsList;
 
-    setData(value);
+      setData(value);
+    } else {
+      router.push(`/`);
+    }
   }, []);
+
+  useEffect(() => {
+    let value;
+    // Get the value from local storage if it exists
+    value = localStorage.getItem("data") || "";
+    if (value) {
+      value = JSON.parse(value);
+      value = value.data;
+      if (pathname && pathname.split("/")[2] !== value.topic) {
+        router.push(`/${value.topic}`);
+      }
+    }
+  }, [pathname]);
 
   // localStorage.getItem("data");
   // data = JSON.parse(data);
   // console.log(data);
   // console.log("data", data);
-
-  useEffect(() => {
-    if (pathname && pathname.split("/")[2] !== data.topic) {
-      router.push("/");
-    }
-  }, [pathname]);
 
   const funvar = useContext(AppContext);
 
