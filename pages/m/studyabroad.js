@@ -28,7 +28,7 @@ export default function Home() {
   // } else {
   return (
     <div className="bg-black flex-1 flex min-h-screen h-full w-full justify-center items-center">
-      <HomePage topic={"studyabroad"} />
+      <HomePage topic={"m/studyabroad"} />
 
       {/* <h1 className="text-[200px] text-red-500">{pathname?.split("/")[1]}</h1>
       <h1 className="text-[200px] text-red-500">{searchParams}</h1> */}
