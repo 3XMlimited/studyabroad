@@ -124,11 +124,12 @@ const HomePage = ({ topic }) => {
           }),
         }
       );
-      await response.json();
+      const result = await response.json();
+      console.log("done");
     } catch (error) {
       console.log(error);
     }
-    return;
+    return result;
   };
 
   return (
