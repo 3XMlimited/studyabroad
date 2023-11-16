@@ -65,23 +65,23 @@ const results = () => {
     // }
   }, []);
   useEffect(() => {
-    // if (answers[0] === null || answers === 0) {
-    //   let value;
-    //   // Get the value from local storage if it exists
-    //   value = localStorage.getItem("data") || "";
-    //   if (value) {
-    //     value = JSON.parse(value);
-    //     value = value.data;
-    //     if (value && value.topic) {
-    //       console.log(value?.topic);
-    //       router.push(`/${value?.topic}`);
-    //     } else {
-    //       router.push(`/`);
-    //     }
-    //   } else {
-    //     router.push(`/`);
-    //   }
-    // }
+    if (answers[0] === null || answers === 0) {
+      let value;
+      // Get the value from local storage if it exists
+      value = localStorage.getItem("data") || "";
+      if (value) {
+        value = JSON.parse(value);
+        value = value.data;
+        if (value && value.topic) {
+          console.log(value?.topic);
+          router.push(`/${value?.topic}`);
+        } else {
+          router.push(`/`);
+        }
+      } else {
+        router.push(`/`);
+      }
+    }
   }, []);
 
   useEffect(() => {
