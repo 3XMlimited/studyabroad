@@ -154,7 +154,7 @@ const HomePage = ({ topic }) => {
                   className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
                   onClick={successfulSend}
                 >
-                  START THE QUIZ
+                  START NOW
                 </button>
               </div>
             </div>
