@@ -33,7 +33,7 @@ const HomePage = ({ topic }) => {
   const finalRef = React.useRef(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
+  const [state, setState] = useState(false);
   const router = useRouter();
 
   async function fetchData() {
@@ -107,7 +107,6 @@ const HomePage = ({ topic }) => {
   const saveEmail = async () => {
     // Pending
     try {
-      console.log(email, name);
       const response = await fetch(
         "https://goatrack.io/api/convertkit/email_collect",
         {
@@ -119,17 +118,23 @@ const HomePage = ({ topic }) => {
             email: email,
             first_name: name,
             id: data?.forms,
-            // id: "1111",
-            // id: data.forms,
           }),
         }
       );
       const result = await response.json();
-      console.log("done");
+      setState(true);
     } catch (error) {
       console.log(error);
     }
-    return result;
+    // return result;
+  };
+  const successfulSend = async () => {
+    if (state) {
+      router.push(`/questions/${topic}`);
+      setState(false);
+    } else {
+      setState(false);
+    }
   };
 
   return (
@@ -138,6 +143,19 @@ const HomePage = ({ topic }) => {
         <div>loading...</div>
       ) : (
         <>
+          {state && (
+            <div
+              className="fixed top-0  h-full bg-black/60 w-full flex items-center justify-center p-[20px]"
+              style={{ zIndex: 10000 }}
+            >
+              <button
+                className="h-[50px] w-full max-w-[300px] bg-[#49C1F0] rounded-lg font-bold"
+                onClick={successfulSend}
+              >
+                Get Started
+              </button>
+            </div>
+          )}
           <div className="flex lg:flex-row lg:mx-auto flex-col justify-center align-middle items-center content-center my-auto mx-3 overflow-x-hidden ">
             <div className="flex flex-col item-center content-center justify-center lg:w-[50vw] my-3 lg:my-auto">
               <h1
@@ -277,21 +295,22 @@ const HomePage = ({ topic }) => {
                   className="flex justify-center items-center w-full"
                   width={"full"}
                 >
-                  <Link
+                  {/* <Link
                     onClick={saveEmail}
                     href={`/questions/[topic]`}
                     as={`/questions/${topic}`}
+                  > */}
+                  <Button
+                    mr={2}
+                    onClick={saveEmail}
+                    className={`w-96 ${jost.className}`}
+                    backgroundColor={"#49C1F0"}
+                    fontWeight={"medium"}
+                    color={"white"}
                   >
-                    <Button
-                      mr={2}
-                      className={`w-96 ${jost.className}`}
-                      backgroundColor={"#49C1F0"}
-                      fontWeight={"medium"}
-                      color={"white"}
-                    >
-                      Start the Quiz Now
-                    </Button>
-                  </Link>
+                    {state ? "Done" : "Start the Quiz Now"}
+                  </Button>
+                  {/* </Link> */}
                 </ModalFooter>
               </ModalContent>
             </Modal>
