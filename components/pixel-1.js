@@ -19,7 +19,7 @@ export default () => (
            pathname=x();
            if(pathname.includes("/questions")){
               fbq('track', 'Lead');}
-           }
+           };
          `,
       }}
     />
