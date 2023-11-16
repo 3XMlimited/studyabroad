@@ -13,8 +13,13 @@ export default () => (
             n.queue=[];t=b.createElement(e);t.async=!0;
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
+           'https://connect.facebook.net/en_US/fbevents.js');
            fbq('init', '227423133626581');fbq('track', 'PageView');
+           x=function(){return window.location.pathname}
+           pathname=x();
+           if(pathname.includes("/questions")){
+              fbq('track', 'Lead');}
+           }
          `,
       }}
     />

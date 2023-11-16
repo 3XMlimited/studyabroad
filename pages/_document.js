@@ -1,6 +1,7 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
-import FACEBOOK_PIXEL_2 from "../components/pixel-2";
+import FACEBOOK_PIXEL_1 from "../components/pixel-1";
+// import FACEBOOK_PIXEL_2 from "../components/pixel-2";
 
 export default function Document() {
   return (
@@ -11,7 +12,7 @@ export default function Document() {
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
-        <FACEBOOK_PIXEL_2 />
+        <FACEBOOK_PIXEL_1 />
       </Head>
       <body>
         {/* <body style={{backgroundColor:'black'}}> */}

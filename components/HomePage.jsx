@@ -130,7 +130,7 @@ const HomePage = ({ topic }) => {
   };
   const successfulSend = async () => {
     if (state) {
-      router.push(`/questions/${topic}`);
+      // router.push(`/questions/${topic}`);
       setState(false);
     } else {
       setState(false);
@@ -150,12 +150,14 @@ const HomePage = ({ topic }) => {
             >
               <div className="h-full max-h-[250px] w-full max-w-[450px] p-[20px] bg-sky-200 rounded-xl flex flex-col items-center justify-center shadow-[0px_0px_10px_5px] shadow-[#5D5454]/20 gap-[20px]">
                 <p className=" text-3xl font-bold">Your quiz is ready</p>
-                <button
-                  className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
-                  onClick={successfulSend}
-                >
-                  START NOW
-                </button>
+                <Link href={`/questions/${topic}`}>
+                  <button
+                    className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
+                    onClick={successfulSend}
+                  >
+                    START NOW
+                  </button>
+                </Link>
               </div>
             </div>
           )}
