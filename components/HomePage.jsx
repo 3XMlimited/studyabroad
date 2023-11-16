@@ -118,7 +118,7 @@ const HomePage = ({ topic }) => {
           body: JSON.stringify({
             email: email,
             first_name: name,
-            id: data.forms,
+            id: data?.forms,
             // id: "1111",
             // id: data.forms,
           }),
