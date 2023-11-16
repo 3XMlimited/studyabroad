@@ -205,9 +205,10 @@ const HomePage = ({ topic }) => {
               </h3>
               {/*  Next Components */}
               <div
-                className={`text-white whitespace-break-spaces hidden lg:block lg:ml-24 my-3 ${jost.className}`}
+                className={`text-white whitespace-break-spaces hidden lg:block lg:ml-24 my-3 ${jost.className} `}
               >
-                {data?.content}
+                {/* {data?.content} */}
+                <div dangerouslySetInnerHTML={{ __html: data?.content }} />
               </div>
 
               {/* Button */}
@@ -232,7 +233,7 @@ const HomePage = ({ topic }) => {
               <div
                 className={`text-white whitespace-break-spaces lg:hidden block lg:ml-24 my-3 ${jost.className}`}
               >
-                {data?.content}
+                <div dangerouslySetInnerHTML={{ __html: data?.content }} />
               </div>
               <button
                 onClick={onOpen}

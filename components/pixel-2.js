@@ -17,7 +17,7 @@ export default () => (
                 y=function(){n=localStorage.getItem("data")|| "" ;n= JSON.parse(n);return [n?.data.topic,n?.data.pixel_id] ; }
                 data = y()
             
-                if(pathname==="/"+data[0] ||pathname === '/questions/'+ data[0] ) {
+                if(pathname==="/"+data[0]|| pathname === '/questions/'+ data[0] ) {
                   fbq('init', data[1]);
                   fbq('track', 'PageView');
                   if(pathname === '/questions/'+ data[0]){

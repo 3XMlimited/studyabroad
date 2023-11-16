@@ -190,7 +190,8 @@ const results = () => {
           <p
             className={`${jost.className} leading-normal whitespace-break-spaces`}
           >
-            {data?.thankyou_content}
+            {/* {data?.thankyou_content} */}
+            <div dangerouslySetInnerHTML={{ __html: data?.thankyou_content }} />
           </p>
         </div>
 
@@ -214,7 +215,8 @@ const results = () => {
           <div
             className={`text-white whitespace-break-spaces ${jost.className} w-full flex items-center text-left lg:text-center`}
           >
-            {data?.question_content}
+            {/* {data?.question_content} */}
+            <div dangerouslySetInnerHTML={{ __html: data?.question_content }} />
           </div>
 
           <button
