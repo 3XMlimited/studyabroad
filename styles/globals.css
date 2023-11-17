@@ -9,6 +9,7 @@ body{
     background-color: black !important;
 }
 #buttonLink a {
-    color:#0000FF  !important
-
+    color: #0000FF !important;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
