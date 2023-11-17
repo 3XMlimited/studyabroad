@@ -42,7 +42,8 @@ const results = () => {
               .map((l, i) => l.name)
               .findIndex((l) => l === r.category);
 
-            charts[index].value = charts[index].value + Number(r.value.score);
+            charts[index].value =
+              Number(charts[index].value) + Number(r.value.score);
           } else {
             charts.push({
               name: r.category,
