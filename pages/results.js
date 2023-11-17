@@ -150,7 +150,6 @@ const results = () => {
             fontWeight: "bold",
             color: "white",
             overflow: "break",
-            formatter: '{b}: {d}'
           },
           labelLine: {
             show: true, // Set this to true to show lines connecting names to the chart
