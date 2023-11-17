@@ -74,61 +74,58 @@ const Questions_studyabroad = () => {
   );
 
   return (
-    <div className="bg-black min-h-screen h-full w-full min-w-full">
-      <div className="lg:mx-auto justify-center align-middle p-[20px]">
+    <div className="bg-black h-screen min-h-fit w-full">
+      <div className="h-full w-full flex flex-col items-center p-[20px]">
         <div
-          className={`lg:w-[50vw] flex flex-col justify-center mx-auto py-auto h-full align-middle content-center`}
+          className={`h-full w-full max-w-[800px] grid grid-rows-[1fr_min-content]`}
         >
-          <div className="relative h-[40px] w-[40px] sm:h-[225px] sm:w-[225px]">
-            <Image
-              src={data?.logo}
-              alt="Hat"
-              layout="fill"
-              objectFit="contain"
-            />
+          <div className="h-fit w-full flex flex-col">
+            <div className="relative h-[40px] w-[40px] sm:h-[200px] sm:w-[200px] rounded-lg overflow-hidden">
+              <Image src={data?.logo} alt="Hat" layout='fill' objectFit='contain' />
+            </div>
+            {answeredCount > 0 && (
+              <button
+                onClick={goBack}
+                className={`text-white ${jost.className} mt-[20px]`}
+              >
+                <div className="flex">
+                  <IoMdArrowBack
+                    className="inline "
+                    size={"1.2rem"}
+                    color="white"
+                  />
+                  <span className="text-xl relative bottom-1 left-3 text-white">
+                    Back
+                  </span>
+                </div>
+              </button>
+            )}
+            <h1
+              className={`text-white ${jost.className} mt-5 text-xl sm:text-4xl`}
+            >
+              {data.allQuestions && data.allQuestions[answeredCount]}
+            </h1>
+            <div className="h-fit w-full max-w-[400px] flex items-center gap-[10px] mt-5">
+              <button
+                onClick={() => {
+                  getAnswer("Yes");
+                }}
+                className="hover:bg-cyan-700 w-full px-2 bg-cyan-500 text-white font-bold py-3 rounded"
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => {
+                  getAnswer("No");
+                }}
+                className="hover:bg-cyan-700 w-full px-2 bg-cyan-500 text-white font-bold py-3 rounded"
+              >
+                No
+              </button>
+            </div>
           </div>
-          {answeredCount > 0 && (
-            <button
-              onClick={goBack}
-              className={`text-white ${jost.className} mt-[20px]`}
-            >
-              <div className="flex">
-                <IoMdArrowBack
-                  className="inline "
-                  size={"1.2rem"}
-                  color="white"
-                />
-                <span className="text-xl relative bottom-1 left-3 text-white">
-                  Back
-                </span>
-              </div>
-            </button>
-          )}
-          <h1
-            style={{ fontSize: "2rem" }}
-            className={`text-white ${jost.className} mt-5`}
-          >
-            {data.allQuestions && data.allQuestions[answeredCount]}
-          </h1>
-          <div className="flex align-middle h-full w-full mt-5">
-            <button
-              onClick={() => {
-                getAnswer("Yes");
-              }}
-              className="hover:bg-cyan-700 px-16 bg-cyan-500 text-white font-bold py-2 rounded"
-            >
-              <p>Yes</p>
-            </button>
-            <button
-              onClick={() => {
-                getAnswer("No");
-              }}
-              className="hover:bg-cyan-700 mx-2 px-16 bg-cyan-500 text-white font-bold py-2 rounded"
-            >
-              No
-            </button>
-          </div>
-          <div className="mt-5 absolute left-24 md:left-40 lg:left-auto flex flex-col bottom-3 justify-center w-[50vw] mx-auto align-middle content-center ">
+
+          <div className="w-full flex flex-col py-[20px]">
             <p className="text-white">{`${completionPercentage}% Completed`}</p>
             <div className="bg-gray-300 h-4 w-full rounded-md">
               <div

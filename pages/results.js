@@ -16,6 +16,7 @@ const results = () => {
   const funvar = useContext(AppContext);
   const { budget, cult, language, academic, location, answers } = funvar;
   const [radius, setRadius] = useState(["30%", "50%"]);
+  const [chartLegends, setChartLegends] = useState({ colors: [], data: [] });
 
   const [data, setData] = useState(null);
 
@@ -122,12 +123,15 @@ const results = () => {
         show: false, // Set this to false to hide the legend
         orient: "vertical",
         left: "left",
+        textStyle: { 
+          color: '#FFF'
+        }
       },
       series: [
         {
           // name: 'Access From',
           type: "pie",
-          radius: radius,
+          radius: ['70%', '100%'],
           avoidLabelOverlap: true,
           itemStyle: {
             borderRadius: 5,
@@ -135,7 +139,7 @@ const results = () => {
             borderWidth: 1,
           },
           label: {
-            show: true,
+            show: false,
             position: "outside", // Set this to 'outside' to display names outside the chart
             fontSize: 12,
             fontWeight: "bold",
@@ -153,13 +157,15 @@ const results = () => {
           //   { value: 735, name: 'Direct' },
           //   { value: 580, name: 'Email' },
           //   { value: 484, name: 'Union Ads' },
-          //   { value: 300, name: 'Video Ads' }
+          //   { value: 300, name: 'Video Ads' },
           // ],
         },
       ],
     };
 
     myChart.setOption(option);
+
+    setChartLegends({ colors: myChart.getOption().color, data: myChart.getOption().series[0].data })
 
     return () => {
       myChart.dispose();
@@ -187,18 +193,39 @@ const results = () => {
           <p className={`${jost.className} my-[10px] leading-normal`}>
             Your full report has been been generated
           </p>
-          <p
+          <div
             className={`${jost.className} leading-normal whitespace-break-spaces`}
           >
             {/* {data?.thankyou_content} */}
-            <div dangerouslySetInnerHTML={{ __html: data?.thankyou_content }} />
-          </p>
+            {data && <div dangerouslySetInnerHTML={{ __html: data?.thankyou_content }} />}
+          </div>
         </div>
 
-        <div
-          id="echarts-container"
-          className="h-full min-h-[350px] w-full min-w-[200px]"
-        />
+        <div className="h-fit w-full flex flex-col items-center">
+          <div
+            id="echarts-container"
+            className="h-full min-h-[350px] w-full min-w-[200px]"
+          />
+
+          <div className="h-fit w-fit flex flex-col gap-[2px] mt-2">
+            {chartLegends.data ? (
+              chartLegends.data.map((e, i) => {
+                let tempColor = chartLegends.colors[i] ? chartLegends.colors[i] : ''
+                return (
+                  <div className="h-fit w-full grid grid-cols-[30px_min-content_min-content] gap-[5px]" key={i}>
+                    <div className={`h-[30px] w-full rounded-lg`} style={{ background: tempColor }}/>
+                    <div className="h-full min-h-fit flex items-center">
+                      <p className="break-words text-sm text-white">{e.name}</p>
+                    </div>
+                    <div className="h-full min-h-fit w-fit px-2 flex items-center bg-gray-800 rounded-lg">
+                      {e.value}
+                    </div>
+                  </div>
+                )
+              })
+            ) : (<></>)}
+          </div>
+        </div>
       </div>
 
       <div className="h-fit w-full max-w-[800px] flex justify-center">
@@ -216,7 +243,7 @@ const results = () => {
             className={`text-white whitespace-break-spaces ${jost.className} w-full flex items-center text-left lg:text-center`}
           >
             {/* {data?.question_content} */}
-            <div dangerouslySetInnerHTML={{ __html: data?.question_content }} />
+            {data && <div dangerouslySetInnerHTML={{ __html: data?.question_content }} />}
           </div>
 
           <button

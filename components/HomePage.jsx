@@ -231,7 +231,7 @@ const HomePage = ({ topic }) => {
                 className={`text-white lg:hidden  ${jost.className}`}
                 style={{ fontSize: "1.6rem" }}
               >
-                Answer {data?.question_list?.length} questions and we’ll get you
+                Answer {data?.question_list?.length} questions and we’ll get you 
                 a personalised report
               </h3>
               {/*  Next Components */}
@@ -239,7 +239,7 @@ const HomePage = ({ topic }) => {
                 className={`text-white whitespace-break-spaces hidden lg:block lg:ml-24 my-3 ${jost.className} `}
               >
                 {/* {data?.content} */}
-                <div dangerouslySetInnerHTML={{ __html: data?.content }} />
+                {data && <div dangerouslySetInnerHTML={{ __html: data?.content }} />}
               </div>
 
               {/* Button */}
