@@ -126,9 +126,9 @@ const results = () => {
         subtext: `${
           // (location + academic + language + budget + cult) * 10,
           (
-            (data?.answers &&
-              data?.answers?.filter((r) => r === "Yes").length /
-                data?.question_list.length) * 100
+            (data?.chart &&
+              data?.chart.reduce((a, b) => a + b.result, 0) /
+                data?.chart.reduce((a, b) => a + b.total, 0)) * 100
           ).toFixed(0)
         }%`,
 
