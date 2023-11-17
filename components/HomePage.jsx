@@ -198,7 +198,11 @@ const HomePage = ({ topic }) => {
               >
                 {/* {data?.headline} */}
                 {data && (
-                  <div dangerouslySetInnerHTML={{ __html: data?.headline }} />
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: `<div id="buttonLink">${data?.headline}</div>`,
+                    }}
+                  />
                 )}
               </div>
               {/* <h1
@@ -243,7 +247,11 @@ const HomePage = ({ topic }) => {
               >
                 {/* {data?.content} */}
                 {data && (
-                  <div dangerouslySetInnerHTML={{ __html: data?.content }} />
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: `<div id="buttonLink">${data?.content}</div>`,
+                    }}
+                  />
                 )}
               </div>
 

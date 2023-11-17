@@ -8,3 +8,7 @@ body{
     padding: 0;
     background-color: black !important;
 }
+#buttonLink a {
+    color:#0000FF  !important
+
+}

@@ -238,7 +238,9 @@ const results = () => {
             {/* {data?.thankyou_content} */}
             {data && (
               <div
-                dangerouslySetInnerHTML={{ __html: data?.thankyou_content }}
+                dangerouslySetInnerHTML={{
+                  __html: `<div id="buttonLink">${data?.thankyou_content}</div>`,
+                }}
               />
             )}
           </div>
@@ -298,7 +300,9 @@ const results = () => {
             {/* {data?.question_content} */}
             {data && (
               <div
-                dangerouslySetInnerHTML={{ __html: data?.question_content }}
+                dangerouslySetInnerHTML={{
+                  __html: `<div id="buttonLink">${data?.question_content}</div>`,
+                }}
               />
             )}
           </div>
