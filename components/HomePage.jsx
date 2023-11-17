@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loading from "./Loading";
 import { Jost } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,6 +29,7 @@ const HomePage = ({ topic }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
@@ -106,6 +108,8 @@ const HomePage = ({ topic }) => {
   //   Start Quiz Button
   const saveEmail = async () => {
     // Pending
+    setLoading(true);
+    setState(true);
     try {
       const response = await fetch(
         "https://goatrack.io/api/convertkit/email_collect",
@@ -122,7 +126,7 @@ const HomePage = ({ topic }) => {
         }
       );
       const result = await response.json();
-      setState(true);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -150,27 +154,38 @@ const HomePage = ({ topic }) => {
             >
               <div className="h-full max-h-[250px] w-full max-w-[450px] p-[20px] bg-sky-200 rounded-xl flex flex-col items-center justify-center shadow-[0px_0px_10px_5px] shadow-[#5D5454]/20 gap-[20px]">
                 <p className=" text-3xl font-bold">Your quiz is ready</p>
-                {topic === "m/studyabroad" ? (
-                  <Link
-                    href={`/m/question_studyabroad`}
-                    as={`/m/question_studyabroad`}
-                  >
-                    <button
-                      className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
-                      // onClick={successfulSend}
-                    >
-                      START NOW
-                    </button>
-                  </Link>
+                {loading ? (
+                  <Loading />
                 ) : (
-                  <Link href={`/questions/[topic]`} as={`/questions/${topic}`}>
-                    <button
-                      className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
-                      // onClick={successfulSend}
-                    >
-                      START NOW
-                    </button>
-                  </Link>
+                  <>
+                    {topic === "m/studyabroad" ? (
+                      <Link
+                        href={`/m/question_studyabroad`}
+                        as={`/m/question_studyabroad`}
+                        style={{ width: "100%" }}
+                      >
+                        <button
+                          className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
+                          // onClick={successfulSend}
+                        >
+                          START NOW
+                        </button>
+                      </Link>
+                    ) : (
+                      <Link
+                        href={`/questions/[topic]`}
+                        as={`/questions/${topic}`}
+                        style={{ width: "100%" }}
+                      >
+                        <button
+                          className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
+                          // onClick={successfulSend}
+                        >
+                          START NOW
+                        </button>
+                      </Link>
+                    )}
+                  </>
                 )}
               </div>
             </div>

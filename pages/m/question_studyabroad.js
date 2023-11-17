@@ -6,6 +6,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import AppContext from "@/context/Context";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
+
 const jost = Jost({ subsets: ["latin"] });
 
 // const allQuestions = [
