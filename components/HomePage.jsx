@@ -198,7 +198,7 @@ const HomePage = ({ topic }) => {
               >
                 {/* {data?.headline} */}
                 {data && (
-                  <div dangerouslySetInnerHTML={{ __html: data?.content }} />
+                  <div dangerouslySetInnerHTML={{ __html: data?.headline }} />
                 )}
               </div>
               {/* <h1
