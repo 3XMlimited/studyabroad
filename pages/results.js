@@ -207,7 +207,7 @@ const results = () => {
             className="h-full min-h-[350px] w-full min-w-[200px]"
           />
 
-          <div className="h-fit w-full max-w-[500px] flex flex-col gap-[2px] mt-2">
+          {/* <div className="h-fit w-full max-w-[500px] flex flex-col gap-[2px] mt-2">
             {chartLegends.data ? (
               chartLegends.data.map((e, i) => {
                 let tempColor = chartLegends.colors[i] ? chartLegends.colors[i] : ''
@@ -224,7 +224,7 @@ const results = () => {
                 )
               })
             ) : (<></>)}
-          </div>
+          </div> */}
         </div>
       </div>
 
