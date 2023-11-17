@@ -207,24 +207,24 @@ const results = () => {
             className="h-full min-h-[350px] w-full min-w-[200px]"
           />
 
-          {/* <div className="h-fit w-full max-w-[500px] flex flex-col gap-[2px] mt-2">
+          <div className="h-fit w-full max-w-[500px] flex flex-col gap-[2px] mt-2">
             {chartLegends.data ? (
               chartLegends.data.map((e, i) => {
                 let tempColor = chartLegends.colors[i] ? chartLegends.colors[i] : ''
                 return (
                   <div className="h-fit w-full grid grid-cols-[30px_1fr_40px] gap-[5px]" key={i}>
                     <div className={`h-[30px] w-full rounded-lg`} style={{ background: tempColor }}/>
-                    <div className="h-full min-h-fit flex items-center">
+                    <div className="h-fit flex items-center">
                       <p className="break-words text-sm text-white">{e.name}</p>
                     </div>
-                    <div className="h-full min-h-fit w-full flex items-center justify-center bg-gray-800 break-all rounded-lg">
+                    <div className="h-fit w-full flex items-center justify-center bg-gray-800 break-all rounded-lg">
                       {e.value}
                     </div>
                   </div>
                 )
               })
             ) : (<></>)}
-          </div> */}
+          </div>
         </div>
       </div>
 
