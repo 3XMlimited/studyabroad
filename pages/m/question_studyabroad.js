@@ -47,8 +47,16 @@ const Questions_studyabroad = () => {
     } else {
       router.push(`/`);
     }
-    setInnerHeight(window.innerHeight/100 * 100)
   }, []);
+
+  useEffect(() => {
+    function updateSize() {
+      setInnerHeight(window.innerHeight/100 * 100)
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, [])
 
   useEffect(() => {
     let value;
