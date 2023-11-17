@@ -17,6 +17,7 @@ export default () => (
                 x=function(){return window.location.pathname.split('/')[1]}
                 pathname=x()
                 fbq('init', '227423133626581');
+                fbq('init', '881941526695481');
                 fbq('track', 'PageView');
                 if(pathname.includes('questions')){
                     fbq('track', 'Lead');
@@ -28,7 +29,11 @@ export default () => (
       dangerouslySetInnerHTML={{
         __html: `<img height="1" width="1" style="display:none"
                     src="https://www.facebook.com/tr?id=227423133626581&ev=PageView&noscript=1"
-                />`,
+                />
+                <img height="1" width="1" style="display:none"
+                    src="https://www.facebook.com/tr?id=881941526695481&ev=PageView&noscript=1"
+                />
+                `,
       }}
     />
   </React.Fragment>

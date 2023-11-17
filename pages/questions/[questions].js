@@ -47,15 +47,15 @@ const Questions = () => {
       router.push(`/`);
     }
   }, []);
-  
+
   useEffect(() => {
     function updateSize() {
-      setInnerHeight(window.innerHeight/100 * 100)
+      setInnerHeight((window.innerHeight / 100) * 100);
     }
-    window.addEventListener('resize', updateSize);
+    window.addEventListener("resize", updateSize);
     updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, [])
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
   useEffect(() => {
     let value;
@@ -83,14 +83,22 @@ const Questions = () => {
   );
 
   return (
-    <div className="bg-black min-h-fit w-full" style={{ height: `${innerHeight}px` }}>
+    <div
+      className="bg-black min-h-fit w-full"
+      style={{ height: `${innerHeight}px` }}
+    >
       <div className="h-full w-full flex flex-col items-center p-[20px]">
         <div
           className={`h-full w-full max-w-[800px] grid grid-rows-[1fr_min-content]`}
         >
           <div className="h-fit w-full flex flex-col">
             <div className="relative h-[40px] w-[40px] sm:h-[200px] sm:w-[200px] rounded-lg overflow-hidden">
-              <Image src={data?.logo} alt="Hat" layout='fill' objectFit='contain' />
+              <Image
+                src={data?.logo}
+                alt="Hat"
+                layout="fill"
+                objectFit="contain"
+              />
             </div>
             {answeredCount > 0 && (
               <button
@@ -135,11 +143,16 @@ const Questions = () => {
           </div>
 
           <div className="w-full flex flex-col py-[20px]">
-            <p className="text-white">{`${completionPercentage}% Completed`}</p>
+            <p className="text-white">{`${Number(completionPercentage).toFixed(
+              0
+            )}% Completed`}</p>
             <div className="bg-gray-300 h-4 w-full rounded-md">
               <div
                 className="bg-cyan-500 h-4 rounded-md"
-                style={{ width: `${completionPercentage}%` }}
+                style={{
+                  width: `${Number(completionPercentage).toFixed(0)}%`,
+                  maxWidth: "100%",
+                }}
               ></div>
             </div>
           </div>

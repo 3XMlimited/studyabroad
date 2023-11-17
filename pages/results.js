@@ -34,7 +34,7 @@ const results = () => {
         questionsList.push(r.value.question);
       });
       let charts = [];
-
+      console.log(value);
       value?.question_list.map((r, i) => {
         if (answers[i] === "Yes") {
           if (charts && charts.map((l, i) => l.name).includes(r.category)) {
@@ -53,6 +53,17 @@ const results = () => {
         }
       });
       if (value) {
+        charts.map((r) => {
+          (r.name = r.name),
+            (r.value = Number(
+              (
+                (r.value /
+                  value?.question_list.filter((l) => l.category === r.name)
+                    .length) *
+                100
+              ).toFixed(0)
+            ));
+        });
         value.chart = charts;
 
         value.allQuestions = questionsList;
@@ -122,21 +133,21 @@ const results = () => {
       },
       tooltip: {
         trigger: "item",
-        formatter: '{b}: {c}%'
+        formatter: "{b}: {c}%",
       },
       legend: {
         show: false, // Set this to false to hide the legend
         orient: "vertical",
         left: "left",
-        textStyle: { 
-          color: '#FFF'
-        }
+        textStyle: {
+          color: "#FFF",
+        },
       },
       series: [
         {
           // name: 'Access From',
           type: "pie",
-          radius: ['70%', '100%'],
+          radius: ["70%", "100%"],
           avoidLabelOverlap: true,
           itemStyle: {
             borderRadius: 5,
@@ -159,8 +170,8 @@ const results = () => {
             scale: false,
             scaleSize: 0,
             itemStyle: {
-              opacity: 0.5
-            }
+              opacity: 0.5,
+            },
           },
           // data: data?.chart,
           data: data?.chart,
@@ -177,7 +188,10 @@ const results = () => {
 
     myChart.setOption(option);
 
-    setChartLegends({ colors: myChart.getOption().color, data: myChart.getOption().series[0].data })
+    setChartLegends({
+      colors: myChart.getOption().color,
+      data: myChart.getOption().series[0].data,
+    });
 
     return () => {
       myChart.dispose();
@@ -209,7 +223,11 @@ const results = () => {
             className={`${jost.className} leading-normal whitespace-break-spaces`}
           >
             {/* {data?.thankyou_content} */}
-            {data && <div dangerouslySetInnerHTML={{ __html: data?.thankyou_content }} />}
+            {data && (
+              <div
+                dangerouslySetInnerHTML={{ __html: data?.thankyou_content }}
+              />
+            )}
           </div>
         </div>
 
@@ -222,10 +240,18 @@ const results = () => {
           <div className="h-fit w-full max-w-[500px] flex flex-col gap-[2px] mt-2">
             {chartLegends.data ? (
               chartLegends.data.map((e, i) => {
-                let tempColor = chartLegends.colors[i] ? chartLegends.colors[i] : ''
+                let tempColor = chartLegends.colors[i]
+                  ? chartLegends.colors[i]
+                  : "";
                 return (
-                  <div className="h-fit w-full grid grid-cols-[30px_1fr_max-content] gap-[5px]" key={i}>
-                    <div className={`h-[30px] w-full rounded-lg`} style={{ background: tempColor }}/>
+                  <div
+                    className="h-fit w-full grid grid-cols-[30px_1fr_max-content] gap-[5px]"
+                    key={i}
+                  >
+                    <div
+                      className={`h-[30px] w-full rounded-lg`}
+                      style={{ background: tempColor }}
+                    />
                     <div className="h-fit min-h-[30px] flex items-center">
                       <p className="break-words text-sm text-white">{e.name}</p>
                     </div>
@@ -233,9 +259,11 @@ const results = () => {
                       {e.value}%
                     </div>
                   </div>
-                )
+                );
               })
-            ) : (<></>)}
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>
@@ -255,7 +283,11 @@ const results = () => {
             className={`text-white whitespace-break-spaces ${jost.className} w-full flex items-center text-left lg:text-center`}
           >
             {/* {data?.question_content} */}
-            {data && <div dangerouslySetInnerHTML={{ __html: data?.question_content }} />}
+            {data && (
+              <div
+                dangerouslySetInnerHTML={{ __html: data?.question_content }}
+              />
+            )}
           </div>
 
           <button
