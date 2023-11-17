@@ -26,6 +26,7 @@ const jost = Jost({ subsets: ["latin"] });
 
 const Questions_studyabroad = () => {
   const [data, setData] = useState({});
+  const [innerHeight, setInnerHeight] = useState(0);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -46,6 +47,7 @@ const Questions_studyabroad = () => {
     } else {
       router.push(`/`);
     }
+    setInnerHeight(window.innerHeight/100 * 100)
   }, []);
 
   useEffect(() => {
@@ -74,7 +76,7 @@ const Questions_studyabroad = () => {
   );
 
   return (
-    <div className="bg-black h-screen min-h-fit w-full">
+    <div className="bg-black min-h-fit w-full" style={{ height: `${innerHeight}px` }}>
       <div className="h-full w-full flex flex-col items-center p-[20px]">
         <div
           className={`h-full w-full max-w-[800px] grid grid-rows-[1fr_min-content]`}

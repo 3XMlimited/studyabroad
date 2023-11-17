@@ -113,11 +113,16 @@ const results = () => {
         top: "center",
         textStyle: {
           color: "#fff", // Set the text color
-          fontSize: "0.8rem", // Adjust the font size as needed
+          fontSize: "1.2rem", // Adjust the font size as needed
+        },
+        subtextStyle: {
+          color: "#fff", // Set the text color
+          fontSize: "1.2rem", // Adjust the font size as needed
         },
       },
       tooltip: {
         trigger: "item",
+        formatter: '{b}: {c}%'
       },
       legend: {
         show: false, // Set this to false to hide the legend
@@ -145,10 +150,18 @@ const results = () => {
             fontWeight: "bold",
             color: "white",
             overflow: "break",
+            formatter: '{b}: {d}'
           },
           labelLine: {
             show: true, // Set this to true to show lines connecting names to the chart
             length: 9, // You can adjust the length of the lines as needed
+          },
+          emphasis: {
+            scale: false,
+            scaleSize: 0,
+            itemStyle: {
+              opacity: 0.5
+            }
           },
           // data: data?.chart,
           data: data?.chart,
@@ -174,7 +187,7 @@ const results = () => {
   console.log(data);
   return (
     <div className="bg-black min-h-screen h-full w-full flex flex-col items-center text-white p-[20px] gap-[40px] overflow-x-hidden">
-      <div className="h-full w-full flex flex-col items-center text-white lg:min-h-screen lg:grid lg:grid-cols-2 lg:px-[50px]">
+      <div className="h-full w-full flex flex-col items-center text-white gap-[20px] lg:min-h-screen lg:grid lg:grid-cols-2 lg:px-[50px]">
         <div className="flex flex-col items-start">
           <div className="relative h-[40px] w-[40px] lg:h-[150px] lg:w-[150px] rounded-lg overflow-hidden">
             <Image
@@ -212,13 +225,13 @@ const results = () => {
               chartLegends.data.map((e, i) => {
                 let tempColor = chartLegends.colors[i] ? chartLegends.colors[i] : ''
                 return (
-                  <div className="h-fit w-full grid grid-cols-[30px_1fr_40px] gap-[5px]" key={i}>
+                  <div className="h-fit w-full grid grid-cols-[30px_1fr_max-content] gap-[5px]" key={i}>
                     <div className={`h-[30px] w-full rounded-lg`} style={{ background: tempColor }}/>
-                    <div className="h-fit flex items-center">
+                    <div className="h-fit min-h-[30px] flex items-center">
                       <p className="break-words text-sm text-white">{e.name}</p>
                     </div>
-                    <div className="h-fit w-full flex items-center justify-center bg-gray-800 break-all rounded-lg">
-                      {e.value}
+                    <div className="h-fit min-h-[30px] w-full flex items-center justify-center bg-gray-700 px-1 text-sm rounded-lg">
+                      {e.value}%
                     </div>
                   </div>
                 )
