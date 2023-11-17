@@ -28,22 +28,21 @@ const results = () => {
     if (value) {
       value = JSON.parse(value);
       value = value.data;
-
+      console.log(value);
       let questionsList = [];
       value?.question_list?.map((r) => {
         questionsList.push(r.value.question);
       });
       let charts = [];
-      console.log(value);
+
       value?.question_list.map((r, i) => {
         if (answers[i] === "Yes") {
           if (charts && charts.map((l, i) => l.name).includes(r.category)) {
-            console.log(charts);
             let index = charts
               .map((l, i) => l.name)
               .findIndex((l) => l === r.category);
 
-            charts[index].value = charts[index].value + r.value.score;
+            charts[index].value = charts[index].value + Number(r.value.score);
           } else {
             charts.push({
               name: r.category,
@@ -53,19 +52,22 @@ const results = () => {
         }
       });
       if (value) {
+        // console.log("charts", charts);
         charts.map((r) => {
-          (r.name = r.name),
-            (r.value = Number(
-              (
-                (r.value /
-                  value?.question_list.filter((l) => l.category === r.name)
-                    .length) *
-                100
-              ).toFixed(0)
-            ));
-        });
-        value.chart = charts;
+          let afterFilter = value?.question_list.filter(
+            (l) => l.category === r.name
+          );
 
+          r.total = afterFilter.reduce((a, b) => a + Number(b.value?.score), 0);
+
+          r.name = r.name;
+          r.result = r.value;
+          r.value = Number(((r.result / r.total) * 100).toFixed(0));
+        });
+
+        value.chart = charts;
+        value.answers = answers;
+        console.log("chart", charts);
         value.allQuestions = questionsList;
 
         setData(value);
@@ -115,11 +117,21 @@ const results = () => {
       title: {
         text: "Your Overall Score",
         // subtext: `${(location + academic + language + budget + cult) * 10}%`, // Calculate the overall score
-        subtext: `${Math.min(
+        // subtext: `${Math.min(
+        //   // (location + academic + language + budget + cult) * 10,
+        //   data?.chart?.reduce((a, b) => a + b.value, 0) *
+        //     data?.question_list.length,
+        //   100
+        // )}%`,
+        subtext: `${
           // (location + academic + language + budget + cult) * 10,
-          data?.chart?.reduce((a, b) => a + b.value, 0) * 10,
-          100
-        )}%`,
+          (
+            (data?.answers &&
+              data?.answers?.filter((r) => r === "Yes").length /
+                data?.question_list.length) * 100
+          ).toFixed(0)
+        }%`,
+
         left: "center",
         top: "center",
         textStyle: {
