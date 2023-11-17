@@ -47,7 +47,7 @@ const results = () => {
           } else {
             charts.push({
               name: r.category,
-              value: r.value.score,
+              value: Number(r.value.score),
             });
           }
         }
