@@ -8,6 +8,7 @@ import arrow from "../public/arrow.png";
 const jost = Jost({ subsets: ["latin"] });
 
 import { useRouter } from "next/router";
+import { language } from "@/language";
 
 import { useDisclosure } from "@chakra-ui/react";
 import {
@@ -153,7 +154,7 @@ const HomePage = ({ topic }) => {
               style={{ zIndex: 10000 }}
             >
               <div className="h-full max-h-[250px] w-full max-w-[450px] p-[20px] bg-sky-200 rounded-xl flex flex-col items-center justify-center shadow-[0px_0px_10px_5px] shadow-[#5D5454]/20 gap-[20px]">
-                <p className=" text-3xl font-bold">Your quiz is ready</p>
+                <p className=" text-3xl font-bold">{language?.[data?.language]?.home?.ready_dialogue_title}</p>
                 {loading ? (
                   <Loading />
                 ) : (
@@ -168,7 +169,7 @@ const HomePage = ({ topic }) => {
                           className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
                           // onClick={successfulSend}
                         >
-                          START NOW
+                          {language?.[data?.language]?.home?.ready_dialogue_button}
                         </button>
                       </Link>
                     ) : (
@@ -181,7 +182,7 @@ const HomePage = ({ topic }) => {
                           className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
                           // onClick={successfulSend}
                         >
-                          START NOW
+                          {language?.[data?.language]?.home?.ready_dialogue_button}
                         </button>
                       </Link>
                     )}
@@ -238,6 +239,7 @@ const HomePage = ({ topic }) => {
                 className={`text-white lg:hidden  ${jost.className}`}
                 style={{ fontSize: "1.6rem" }}
               >
+                {language?.[data?.language]?.home?.sub_heading.split('10')[0] + data?.question_list?.length + language?.[data?.language]?.home?.sub_heading.split('10')[1]}
                 Answer {data?.question_list?.length} questions and we’ll get you
                 a personalised report
               </h3>
@@ -266,8 +268,8 @@ const HomePage = ({ topic }) => {
                 className={`w-52 rounded-md p-4 ml-24 mt-11 hidden lg:block`}
               >
                 <div className="text-white">
-                  <p>Take The Scorecard</p>
-                  <p>(It only takes 1 minute)</p>
+                  <p>{language?.[data?.language]?.home?.button_top}</p>
+                  <p>({language?.[data?.language]?.home?.button_bottom})</p>
                 </div>
               </button>
             </div>
@@ -285,8 +287,8 @@ const HomePage = ({ topic }) => {
                 className={`w-full rounded-md p-4  mt-5 lg:hidden block`}
               >
                 <div className="text-white">
-                  <p>Take The Scorecard</p>
-                  <p>(It only takes 1 minute)</p>
+                  <p>{language?.[data?.language]?.home?.button_top}</p>
+                  <p>({language?.[data?.language]?.home?.button_bottom})</p>
                 </div>
               </button>
             </div>
@@ -309,7 +311,7 @@ const HomePage = ({ topic }) => {
                   fontWeight={"medium"}
                   fontSize={"1rem"}
                 >
-                  Enter your details below to start the scorecard
+                  {language?.[data?.language]?.home?.form_title}
                 </ModalHeader>
                 {/* <ModalCloseButton /> */}
                 <ModalBody backgroundColor={"#5D5454"} pb={6}>
@@ -356,7 +358,7 @@ const HomePage = ({ topic }) => {
                     fontWeight={"medium"}
                     color={"white"}
                   >
-                    {state ? "Done" : "Start the Quiz Now"}
+                    {state ? "Done" : language?.[data?.language]?.home?.form_button}
                   </Button>
                   {/* </Link> */}
                 </ModalFooter>
