@@ -6,6 +6,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import AppContext from "@/context/Context";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
+import { language } from "@/utils/language";
 const jost = Jost({ subsets: ["latin"] });
 
 // const allQuestions = [
@@ -112,7 +113,7 @@ const Questions = () => {
                     color="white"
                   />
                   <span className="text-xl relative bottom-1 left-3 text-white">
-                    Back
+                    {data?.languageContent?.question?.back}
                   </span>
                 </div>
               </button>
@@ -129,7 +130,9 @@ const Questions = () => {
                 }}
                 className="hover:bg-cyan-700 w-full px-2 bg-cyan-500 text-white font-bold py-3 rounded"
               >
-                Yes
+                {/* Yes */}
+
+                {data?.languageContent?.question?.yes}
               </button>
               <button
                 onClick={() => {
@@ -137,7 +140,8 @@ const Questions = () => {
                 }}
                 className="hover:bg-cyan-700 w-full px-2 bg-cyan-500 text-white font-bold py-3 rounded"
               >
-                No
+                {/* No */}
+                {data?.languageContent?.question?.no}
               </button>
             </div>
           </div>
@@ -145,7 +149,7 @@ const Questions = () => {
           <div className="w-full flex flex-col py-[20px]">
             <p className="text-white">{`${Number(completionPercentage).toFixed(
               0
-            )}% Completed`}</p>
+            )}% ${data?.languageContent?.question?.completed}`}</p>
             <div className="bg-gray-300 h-4 w-full rounded-md">
               <div
                 className="bg-cyan-500 h-4 rounded-md"

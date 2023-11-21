@@ -9,6 +9,7 @@ import { BsFacebook, BsTwitter, BsLinkedin } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 import { Jost } from "next/font/google";
 import Link from "next/link";
+import { language } from "@/utils/language";
 const jost = Jost({ subsets: ["latin"] });
 
 const results = () => {
@@ -116,7 +117,7 @@ const results = () => {
 
     let option = {
       title: {
-        text: "Your Overall Score",
+        text: data?.languageContent?.result.score,
         // subtext: `${(location + academic + language + budget + cult) * 10}%`, // Calculate the overall score
         // subtext: `${Math.min(
         //   // (location + academic + language + budget + cult) * 10,
@@ -210,7 +211,7 @@ const results = () => {
       myChart.dispose();
     };
   }, [data]);
-  console.log(data);
+  // console.log(data);
   return (
     <div className="bg-black min-h-screen h-full w-full flex flex-col items-center text-white p-[20px] gap-[40px] overflow-x-hidden">
       <div className="h-full w-full flex flex-col items-center text-white gap-[20px] lg:min-h-screen lg:grid lg:grid-cols-2 lg:px-[50px]">
@@ -227,10 +228,12 @@ const results = () => {
             className={`${jost.className} leading-tight text-left`}
             style={{ fontSize: "2.1rem" }}
           >
-            Congratulations on Completing the Quiz!
+            {/* Congratulations on Completing the Quiz! */}
+            {data?.languageContent?.result.heading}
           </h1>
           <p className={`${jost.className} my-[10px] leading-normal`}>
-            Your full report has been been generated
+            {/* Your full report has been been generated */}
+            {data?.languageContent?.result.sub_heading}
           </p>
           <div
             className={`${jost.className} leading-normal whitespace-break-spaces`}
@@ -353,7 +356,9 @@ const results = () => {
           )}
 
           <div className="h-fit w-full flex flex-col items-center my-6">
-            <div className={`${jost.className}`}>Share it with friends</div>
+            <div className={`${jost.className}`}>
+              {data?.languageContent?.result.share}
+            </div>
             <div className="flex flex-row w-40 py-5 px-8 rounded-md">
               {data?.button_link && (
                 <>

@@ -1,4 +1,4 @@
-function Loading() {
+function Loading({ text }) {
   return (
     <div className="h-full w-full flex flex-col items-center justify-center sm:flex-row">
       <svg class="h-20 w-20 animate-spin stroke-gray-600" viewBox="0 0 256 256">
@@ -75,7 +75,7 @@ function Loading() {
           stroke-width="24"
         ></line>
       </svg>
-      <p className="text-gray-600 text-3xl sm:text-5xl">LOADING</p>
+      <p className="text-gray-600 text-3xl sm:text-5xl uppercase">{text}</p>
     </div>
   );
 }

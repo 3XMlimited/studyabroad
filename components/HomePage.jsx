@@ -8,7 +8,7 @@ import arrow from "../public/arrow.png";
 const jost = Jost({ subsets: ["latin"] });
 
 import { useRouter } from "next/router";
-import { language } from "@/language";
+import { language } from "@/utils/language";
 
 import { useDisclosure } from "@chakra-ui/react";
 import {
@@ -60,6 +60,8 @@ const HomePage = ({ topic }) => {
           if (data.success === false) {
             router.push("/");
           }
+          data.result.languageContent = language[`${data.result.language}`];
+          console.log("data", data.result);
           setData(data.result);
           // let length = data?.result?.question_list?.length;
 
@@ -91,7 +93,7 @@ const HomePage = ({ topic }) => {
         value = JSON.parse(value);
         if (value && value.question_list) {
           value = value.data;
-
+          value.languageContent = language[`${value.language}`];
           setData(value);
         }
       }
@@ -145,7 +147,7 @@ const HomePage = ({ topic }) => {
   return (
     <>
       {isLoading ? (
-        <div>loading...</div>
+        <div>{data?.languageContent.home?.loading}...</div>
       ) : (
         <>
           {state && (
@@ -154,9 +156,11 @@ const HomePage = ({ topic }) => {
               style={{ zIndex: 10000 }}
             >
               <div className="h-full max-h-[250px] w-full max-w-[450px] p-[20px] bg-sky-200 rounded-xl flex flex-col items-center justify-center shadow-[0px_0px_10px_5px] shadow-[#5D5454]/20 gap-[20px]">
-                <p className=" text-3xl font-bold">{language?.[data?.language]?.home?.ready_dialogue_title}</p>
+                <p className=" text-3xl font-bold">
+                  {data?.languageContent?.home?.ready_dialogue_title}
+                </p>
                 {loading ? (
-                  <Loading />
+                  <Loading text={data?.languageContent.home?.loading} />
                 ) : (
                   <>
                     {topic === "m/studyabroad" ? (
@@ -169,7 +173,7 @@ const HomePage = ({ topic }) => {
                           className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
                           // onClick={successfulSend}
                         >
-                          {language?.[data?.language]?.home?.ready_dialogue_button}
+                          {data?.languageContent?.home?.ready_dialogue_button}
                         </button>
                       </Link>
                     ) : (
@@ -182,7 +186,7 @@ const HomePage = ({ topic }) => {
                           className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
                           // onClick={successfulSend}
                         >
-                          {language?.[data?.language]?.home?.ready_dialogue_button}
+                          {data?.languageContent?.home?.ready_dialogue_button}
                         </button>
                       </Link>
                     )}
@@ -223,15 +227,29 @@ const HomePage = ({ topic }) => {
                   className={`text-white text-xl mt-5  hidden lg:block ${jost.className}`}
                   style={{ fontSize: "1.6rem" }}
                 >
-                  Answer {data?.question_list?.length} questions and we’ll get
-                  you{" "}
+                  {/* Answer {data?.question_list?.length} questions and we’ll get
+                  you{" "} */}
+                  {data?.languageContent.home.sub_heading.split("10")[0] +
+                    data?.question_list?.length +
+                    data?.languageContent.home.sub_heading
+                      .split("10")[1]
+                      .split(" ")
+                      .slice(0, -3)
+                      .toString()
+                      .replaceAll(",", " ")}
                 </h3>
               </div>
               <h3
                 className={`text-white text-xl hidden lg:block lg:mx-24 ${jost.className}`}
                 style={{ fontSize: "1.6rem" }}
               >
-                a personalised report{" "}
+                {/* a personalised report{" "} */}
+                {data?.languageContent?.home?.sub_heading
+                  .split("10")[1]
+                  .split(" ")
+                  .slice(-3)
+                  .toString()
+                  .replaceAll(",", " ")}
               </h3>
               {/*  for mobile devices */}
 
@@ -239,9 +257,9 @@ const HomePage = ({ topic }) => {
                 className={`text-white lg:hidden  ${jost.className}`}
                 style={{ fontSize: "1.6rem" }}
               >
-                {language?.[data?.language]?.home?.sub_heading.split('10')[0] + data?.question_list?.length + language?.[data?.language]?.home?.sub_heading.split('10')[1]}
-                Answer {data?.question_list?.length} questions and we’ll get you
-                a personalised report
+                {data?.languageContent?.home?.sub_heading.split("10")[0] +
+                  data?.question_list?.length +
+                  data?.languageContent?.home?.sub_heading.split("10")[1]}
               </h3>
               {/*  Next Components */}
               <div
@@ -268,8 +286,8 @@ const HomePage = ({ topic }) => {
                 className={`w-52 rounded-md p-4 ml-24 mt-11 hidden lg:block`}
               >
                 <div className="text-white">
-                  <p>{language?.[data?.language]?.home?.button_top}</p>
-                  <p>({language?.[data?.language]?.home?.button_bottom})</p>
+                  <p>{data?.languageContent?.home?.button_top}</p>
+                  <p>({data?.languageContent?.home?.button_bottom})</p>
                 </div>
               </button>
             </div>
@@ -287,8 +305,8 @@ const HomePage = ({ topic }) => {
                 className={`w-full rounded-md p-4  mt-5 lg:hidden block`}
               >
                 <div className="text-white">
-                  <p>{language?.[data?.language]?.home?.button_top}</p>
-                  <p>({language?.[data?.language]?.home?.button_bottom})</p>
+                  <p>{data?.languageContent?.home?.button_top}</p>
+                  <p>({data?.languageContent?.home?.button_bottom})</p>
                 </div>
               </button>
             </div>
@@ -311,7 +329,7 @@ const HomePage = ({ topic }) => {
                   fontWeight={"medium"}
                   fontSize={"1rem"}
                 >
-                  {language?.[data?.language]?.home?.form_title}
+                  {data?.languageContent.home?.form_title}
                 </ModalHeader>
                 {/* <ModalCloseButton /> */}
                 <ModalBody backgroundColor={"#5D5454"} pb={6}>
@@ -323,7 +341,7 @@ const HomePage = ({ topic }) => {
                       className={jost.className}
                       backgroundColor={"white"}
                       ref={initialRef}
-                      placeholder="First name *"
+                      placeholder={data?.languageContent.home?.form_name}
                     />
                   </FormControl>
 
@@ -335,7 +353,7 @@ const HomePage = ({ topic }) => {
                       className={jost.className}
                       backgroundColor={"white"}
                       type="email"
-                      placeholder="Email *"
+                      placeholder={data?.languageContent.home?.form_email}
                     />
                   </FormControl>
                 </ModalBody>
@@ -358,7 +376,9 @@ const HomePage = ({ topic }) => {
                     fontWeight={"medium"}
                     color={"white"}
                   >
-                    {state ? "Done" : language?.[data?.language]?.home?.form_button}
+                    {state
+                      ? data?.languageContent?.home?.form_button_done
+                      : data?.languageContent?.home?.form_button}
                   </Button>
                   {/* </Link> */}
                 </ModalFooter>
