@@ -195,7 +195,7 @@ const HomePage = ({ topic }) => {
               </div>
             </div>
           )}
-          <div className="flex lg:flex-row lg:mx-auto flex-col justify-center align-middle items-center content-center my-auto mx-3 overflow-x-hidden ">
+          <div className="flex lg:flex-row lg:mx-auto flex-col justify-center align-middle items-center content-center  m-3 overflow-x-hidden ">
             <div className="flex flex-col item-center content-center justify-center lg:w-[50vw] my-3 lg:my-auto">
               <div
                 className={`text-white ${jost.className} text lg:ml-24 max-w-[800px]`}
@@ -283,7 +283,7 @@ const HomePage = ({ topic }) => {
               <button
                 onClick={onOpen}
                 style={{ backgroundColor: "#49C1F0" }}
-                className={`w-52 rounded-md p-4 ml-24 mt-11 hidden lg:block`}
+                className={`w-fit min-w-52 rounded-md p-4 ml-24 mt-11 hidden lg:block`}
               >
                 <div className="text-white">
                   <p>{data?.languageContent?.home?.button_top}</p>
