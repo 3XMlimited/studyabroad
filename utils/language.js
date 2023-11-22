@@ -33,7 +33,7 @@ export const language = {
       sub_heading:
         "Responda 10 preguntas y le entregaremos un informe personalizado",
       button_top: "Comienza Aqui",
-      button_bottom: "(Toma solo 1 minuto)",
+      button_bottom: "Toma solo 1 minuto",
       form_title: "Ingresa tu email asi te enviamos los resultados",
       form_name: "Nombre *",
       form_email: "Email *",
