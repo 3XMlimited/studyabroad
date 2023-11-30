@@ -13,7 +13,7 @@ const Quizzes = () => {
     const getData = async () => {
       setLoading(true)
       
-      await fetch(`http://thewordartisan.online/api/v1/template`)
+      await fetch(`https://thewordartisan.online/api/v1/template`)
         .then(response => response.json())
         .then(response => {
           const obj = response.data
