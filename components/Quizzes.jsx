@@ -1,53 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { LiaQuestionSolid } from "react-icons/lia";
 import Image from "next/image";
-import questions from "../public/questions.png";
-import image1 from "../public/image.png";
 import Link from "next/link";
+import Loading from "./Loading";
+
 const Quizzes = () => {
-  const quizzes = [
-    {
-      name: "bitcoin",
-      image: questions,
-    },
-    {
-      name: "study abroad d sa d sa d asd sa d sa dsad as d sad",
-      image: image1,
-    },
-    {
-      name: "bitcoin",
-      image: questions,
-    },
-    {
-      name: "study abroad d sa d sa d asd sa d sa dsad as d sad",
-      image: image1,
-    },
-    {
-      name: "bitcoin",
-      image: questions,
-    },
-    {
-      name: "study abroad d sa d sa d asd sa d sa dsad as d sad",
-      image: image1,
-    },
-    {
-      name: "bitcoin",
-      image: questions,
-    },
-    {
-      name: "study abroad d sa d sa d asd sa d sa dsad as d sad dsa dsa d sa dsa dsa d sa dsa d sad sa d sad sa dsa d sa dsa d",
-      image: image1,
-    },
-    {
-      name: "bitcoin",
-      image: questions,
-    },
-    {
-      name: "study abroad d sa d sa d asd sa d sa dsad as d sad",
-      image: image1,
-    },
-  ];
+  const [quizzes, setQuizzes] = useState([])
+  const [loading, setLoading] = useState(false)
+  
+  useEffect(() => {
+    const getData = async () => {
+      setLoading(true)
+      
+      await fetch(`http://thewordartisan.online/api/v1/template`)
+        .then(response => response.json())
+        .then(response => {
+          const obj = response.data
+          if (obj) {
+            setQuizzes(obj.map(e => { return { topic: e?.topic, headline: e?.headline, image: e?.image } }))
+          } else {
+            setQuizzes()
+          }
+        })
+        .catch(err => console.error(err))
+        .finally(() => setLoading(false))
+    }
+
+    getData()
+  }, [])
 
   return (
     <div className="relative h-full min-h-screen w-full bg-white grid grid-rows-[1fr_60px] overflow-y-scroll">
@@ -79,33 +60,42 @@ const Quizzes = () => {
             <p className="leading-tight text-black text-sm text-center mb-[20px] sm:text-base">
               Take as many quizzes as you want
             </p>
-            <div className="h-fit w-full grid grid-cols-1 gap-[30px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {quizzes.map((e, i) => (
-                <div
-                  className="group h-fit w-full grid grid-rows-[200px_1fr_40px] gap-[10px] bg-gray-50 shadow-md rounded-lg p-4 cursor-pointer sm:min-h-full"
-                  key={i}
-                  onClick={() => window.alert("clicked")}
-                >
-                  <div className="h-[200px] w-full rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden">
-                    <Image
-                      src={e.image}
-                      alt=""
-                      className="h-full object-contain"
-                    />
-                  </div>
-                  <p className="text-lg text-black font-medium">{e.name}</p>
-                  <button className="h-[40px] w-fit flex items-center gap-2 bg-blue-500 px-3 rounded-md border border-blue-500 duration-200 group-hover:bg-transparent">
-                    <p className="text-white font-medium group-hover:text-blue-500">
-                      Take Quiz
-                    </p>
-                    <FaArrowRight
-                      size={16}
-                      className="fill-white group-hover:fill-blue-500"
-                    />
-                  </button>
-                </div>
-              ))}
-            </div>
+            {loading ? (
+              Loading({ text: 'Loading' })
+            ) : (
+              <div className="h-fit w-full grid grid-cols-1 gap-[30px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {quizzes.map((e, i) => (
+                  <Link href={`/${e?.topic}`} target="_blank" key={i}>
+                    <div
+                      className="group h-fit w-full grid grid-rows-[200px_1fr_40px] gap-[10px] bg-gray-50 shadow-md rounded-lg p-4 cursor-pointer sm:min-h-full"
+                    >
+                      <div className="relative h-[200px] w-full rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden">
+                        <Image
+                          src={e?.image}
+                          alt=""
+                          fill={true}
+                          objectFit="cover"
+                        />
+                      </div>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: `<div>${e?.headline}</div>`,
+                        }}
+                      />
+                      <button className="h-[40px] w-fit flex items-center gap-2 bg-blue-500 px-3 rounded-md border border-blue-500 duration-200 group-hover:bg-transparent">
+                        <p className="text-white font-medium group-hover:text-blue-500">
+                          Take Quiz
+                        </p>
+                        <FaArrowRight
+                          size={16}
+                          className="fill-white group-hover:fill-blue-500"
+                        />
+                      </button>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
