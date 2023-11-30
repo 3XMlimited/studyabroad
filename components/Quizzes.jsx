@@ -18,7 +18,10 @@ const Quizzes = () => {
         .then(response => {
           const obj = response.data
           if (obj) {
-            setQuizzes(obj.map(e => { return { topic: e?.topic, headline: e?.headline, image: e?.image } }))
+            const images = Array.from(new Set(obj.map(e => e?.image)))
+            const fin = images.map(e => { return obj.find(f => f?.image === e) })
+            setQuizzes(fin.map(e => { return { topic: e?.topic, headline: e?.headline, image: e?.image } }))
+            // setQuizzes(obj.map(e => { return { topic: e?.topic, headline: e?.headline, image: e?.image } }))
           } else {
             setQuizzes()
           }
