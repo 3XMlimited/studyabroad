@@ -19,4 +19,5 @@ body{
     font-weight: 500;
     color: #AAA;
     filter: brightness(0%);
+    font-style: normal;
 }
