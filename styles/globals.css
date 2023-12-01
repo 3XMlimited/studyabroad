@@ -16,8 +16,7 @@ body{
 }
 
 #quizzes-page-headline, #quizzes-page-headline * {
-    font-weight: 500;
-    color: #AAA;
-    filter: brightness(0%);
+    font-weight: 500 !important;
+    color: #000 !important;
     font-style: normal;
 }
