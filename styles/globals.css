@@ -8,8 +8,15 @@ body{
     padding: 0;
     background-color: black !important;
 }
+
 #buttonLink a {
     color: #0000FF !important;
     text-decoration: underline;
     text-underline-offset: 4px;
+}
+
+#quizzes-page-headline, #quizzes-page-headline * {
+    font-weight: 500;
+    color: #AAA;
+    filter: brightness(0%);
 }

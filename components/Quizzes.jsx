@@ -82,7 +82,7 @@ const Quizzes = () => {
                       </div>
                       <div
                         dangerouslySetInnerHTML={{
-                          __html: `<div>${e?.headline}</div>`,
+                          __html: `<div id="quizzes-page-headline">${e?.headline}</div>`,
                         }}
                       />
                       <button className="h-[40px] w-fit flex items-center gap-2 bg-blue-500 px-3 rounded-md border border-blue-500 duration-200 group-hover:bg-transparent">
