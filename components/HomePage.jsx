@@ -176,33 +176,18 @@ const HomePage = ({ topic }) => {
                   <Loading text={data?.languageContent.home?.loading} />
                 ) : (
                   <>
-                    {topic === "m/studyabroad" ? (
-                      <Link
-                        href={`/m/question_studyabroad`}
-                        as={`/m/question_studyabroad`}
-                        style={{ width: "100%" }}
+                    <Link
+                      href={`/questions/[topic]`}
+                      as={`/questions/${topic}`}
+                      style={{ width: "100%" }}
+                    >
+                      <button
+                        className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
+                        // onClick={successfulSend}
                       >
-                        <button
-                          className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
-                          // onClick={successfulSend}
-                        >
-                          {data?.languageContent?.home?.ready_dialogue_button}
-                        </button>
-                      </Link>
-                    ) : (
-                      <Link
-                        href={`/questions/[topic]`}
-                        as={`/questions/${topic}`}
-                        style={{ width: "100%" }}
-                      >
-                        <button
-                          className="h-[50px] w-full bg-[#49C1F0] rounded-lg text-gray-700 font-bold"
-                          // onClick={successfulSend}
-                        >
-                          {data?.languageContent?.home?.ready_dialogue_button}
-                        </button>
-                      </Link>
-                    )}
+                        {data?.languageContent?.home?.ready_dialogue_button}
+                      </button>
+                    </Link>
                   </>
                 )}
               </div>
