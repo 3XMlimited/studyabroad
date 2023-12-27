@@ -114,20 +114,33 @@ const HomePage = ({ topic }) => {
     setLoading(true);
     setState(true);
     try {
-      const response = await fetch(
-        "https://goatrack.io/api/convertkit/email_collect",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email,
-            first_name: name,
-            id: data?.forms,
-          }),
-        }
-      );
+      const response = await fetch(`/api/db`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          topic,
+          id: data?.forms,
+          email,
+          name,
+        }),
+      });
+
+      // const response = await fetch(
+      //   "https://goatrack.io/api/convertkit/email_collect",
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       email: email,
+      //       first_name: name,
+      //       id: data?.forms,
+      //     }),
+      //   }
+      // );
       const result = await response.json();
       setLoading(false);
     } catch (error) {
