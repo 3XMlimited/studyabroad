@@ -4,7 +4,7 @@
 //   res.status(200).json({ name: 'John Doe' })
 // }
 import { MongoClient, ServerApiVersion } from "mongodb";
-
+import moment from "moment";
 // import * as dotenv from "dotenv";
 // dotenv.config();
 
@@ -57,6 +57,7 @@ export default async function handler(req, res) {
         topic,
         name,
         email,
+        date: moment().format("YYYY-MM-DD"),
       });
 
       if (data.success) {
