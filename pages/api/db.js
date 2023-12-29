@@ -45,6 +45,22 @@ const connectDB = async (db_name, collection_name, data) => {
     client.close();
   }
 };
+const beehiiv = async (email) => {
+  const response = await fetch(
+    "https://api.beehiiv.com/v2/publications/pub_b6f880b1-9806-4df9-8956-e838eabed16e/subscriptions",
+    {
+      headers: {
+        Authorization: "Bearer " + process.env.Beehiiv,
+      },
+
+      email,
+      send_welcome_email: true,
+    }
+  );
+  const result = await response.json();
+  // console.log(result);
+  return true;
+};
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -57,8 +73,13 @@ export default async function handler(req, res) {
         topic,
         name,
         email,
+        location: country,
+        state: "active",
         date: moment().format("YYYY-MM-DD"),
       });
+      if (topic === "croxroad") {
+        await beehiiv(email);
+      }
 
       if (data.success) {
         res.status(200).json({ result: true });

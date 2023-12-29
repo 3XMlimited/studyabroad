@@ -25,7 +25,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-const HomePage = ({ topic }) => {
+const HomePage = ({ topic, country }) => {
   //  Modal To get email
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState(null);
@@ -113,39 +113,45 @@ const HomePage = ({ topic }) => {
     // Pending
     setLoading(true);
     setState(true);
-    try {
-      const response = await fetch(`/api/db`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          topic,
-          id: data?.forms,
-          email,
-          name,
-        }),
-      });
+    if (email !== "" && name !== "") {
+      try {
+        const response = await fetch(`/api/db`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            topic,
+            id: data?.forms,
+            email,
+            name,
+            country,
+          }),
+        });
 
-      // const response = await fetch(
-      //   "https://goatrack.io/api/convertkit/email_collect",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //       email: email,
-      //       first_name: name,
-      //       id: data?.forms,
-      //     }),
-      //   }
-      // );
-      const result = await response.json();
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
+        // const response = await fetch(
+        //   "https://goatrack.io/api/convertkit/email_collect",
+        //   {
+        //     method: "POST",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //       email: email,
+        //       first_name: name,
+        //       id: data?.forms,
+        //     }),
+        //   }
+        // );
+        const result = await response.json();
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("Please enter a valid email and name !");
     }
+
     // return result;
   };
   const successfulSend = async () => {
