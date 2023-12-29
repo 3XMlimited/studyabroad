@@ -64,7 +64,7 @@ const beehiiv = async (email) => {
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const { id, topic, name, email } = await req.body;
+    const { id, topic, name, email, country } = await req.body;
     console.log("name", name);
     // Process a POST request
     try {
