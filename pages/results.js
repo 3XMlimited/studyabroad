@@ -25,7 +25,7 @@ const results = () => {
     let value;
     // Get the value from local storage if it exists
     value = localStorage.getItem("data") || "";
-
+    console.log("value", value);
     if (value) {
       value = JSON.parse(value);
       value = value.data;
