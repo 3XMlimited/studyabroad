@@ -90,7 +90,7 @@ export default async function handler(req, res) {
               FirstName: name,
               Country: country,
               Topic: topic,
-              date: moment().format("YYYY-MM-DD"),
+              Date: moment().format("YYYY-MM-DD"),
             },
           }),
         }
