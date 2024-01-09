@@ -4,6 +4,11 @@ import { LiaQuestionSolid } from "react-icons/lia";
 import Image from "next/image";
 import Link from "next/link";
 import Loading from "./Loading";
+import logo from "../public/logo.jpg";
+
+// #c7fffa
+// #81ebf2
+// #ff7606
 
 const Quizzes = () => {
   const [quizzes, setQuizzes] = useState([])
@@ -32,19 +37,13 @@ const Quizzes = () => {
   }, [])
 
   return (
-    <div className="relative h-full min-h-screen w-full bg-white grid grid-rows-[1fr_60px] overflow-y-scroll">
+    <div className="relative h-full min-h-screen w-full bg-white grid grid-rows-[1fr_60px]">
       <div className="h-full">
         {/* navbar */}
-        <div className="sticky top-0 h-[60px] w-full bg-white flex items-center justify-center py-[10px] px-[20px] shadow-lg shadow-blue-500/10">
+        <div className="sticky top-0 z-50 h-[60px] w-full bg-gradient-to-t from-[#81ebf2] to-[#c7fffa] flex items-center justify-center px-[20px]">
           <div className="h-full w-full max-w-[1200px] flex items-center justify-between">
-            <Link href="/">
-              <div
-                className="flex items-center cursor-pointer duration-200 hover:opacity-50"
-                //   onClick={() => window.alert("home")}
-              >
-                <LiaQuestionSolid size={30} color={"#000"} />
-                <p className="text-xl text-black inline">esquiz</p>
-              </div>
+            <Link href="/" className="h-full flex items-center cursor-pointer duration-200 hover:opacity-50">
+              <Image src={logo} alt="logo" className="h-full w-fit min-w-[60px]" />
             </Link>
           </div>
         </div>
@@ -83,13 +82,13 @@ const Quizzes = () => {
                           __html: `<div id="quizzes-page-headline">${e?.headline}</div>`,
                         }}
                       />
-                      <button className="h-[40px] w-fit flex items-center gap-2 bg-blue-500 px-3 rounded-md border border-blue-500 duration-200 group-hover:bg-transparent">
-                        <p className="text-white font-medium group-hover:text-blue-500">
+                      <button className="h-[40px] w-fit flex items-center gap-2 bg-[#ff7606] px-3 rounded-md border-2 border-[#ff7606] duration-200 group-hover:bg-transparent">
+                        <p className="text-white font-medium group-hover:text-[#ff7606]">
                           Take Quiz
                         </p>
                         <FaArrowRight
                           size={16}
-                          className="fill-white group-hover:fill-blue-500"
+                          className="fill-white group-hover:fill-[#ff7606]"
                         />
                       </button>
                     </div>

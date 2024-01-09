@@ -8,32 +8,37 @@ import { BsFolderPlus } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 import questions from "../public/questions.png";
+import logo from "../public/logo.jpg";
+
+// #c7fffa
+// #81ebf2
+// #ff7606
+// #ff9d02
 
 const Home = () => {
   return (
-    <div className="relative h-full min-h-screen w-full bg-white grid grid-rows-[1fr_60px] overflow-y-scroll">
+    <div className="relative h-full min-h-screen w-full bg-white grid grid-rows-[1fr_60px]">
       <div className="h-full">
         {/* navbar */}
-        <div className="sticky top-0 h-[60px] w-full bg-white flex items-center justify-center py-[10px] px-[20px] shadow-lg shadow-blue-500/10">
+        <div className="sticky top-0 z-50 h-[60px] w-full bg-gradient-to-t from-[#81ebf2] to-[#c7fffa] flex items-center justify-center px-[20px]">
           <div className="h-full w-full max-w-[1200px] flex items-center justify-between">
-            <div className="flex items-center">
-              <LiaQuestionSolid size={30} color={"#000"} />
-              <p className="text-xl text-black hidden sm:inline">esquiz</p>
+            <div className="h-full flex items-center">
+              <Image src={logo} alt="logo" className="h-full w-fit min-w-[60px]" />
             </div>
-            <div className="h-full flex items-center gap-[10px]">
+            <div className="h-full flex items-center gap-[10px] py-[10px]">
               <Link href={"/home/quizzes"}>
                 <button
-                  className="h-full text-sm text-black font-semibold px-[10px] duration-200 hover:text-blue-500 sm:text-base"
+                  className="h-full text-sm text-black font-medium px-[10px] duration-200 hover:text-[#ff7606] sm:text-base"
                   // onClick={() => window.alert("quizes pressed")}
                 >
                   QUIZZES
                 </button>
               </Link>
 
-              <button className="h-full text-sm text-black font-semibold px-[10px] duration-200 hover:text-blue-500 sm:text-base">
+              <button className="h-full text-sm text-black font-medium px-[10px] duration-200 hover:text-[#ff7606] sm:text-base">
                 Log In
               </button>
-              <button className="h-full text-sm bg-blue-500 text-white rounded-full px-[10px] border border-blue-500 duration-200 hover:text-black hover:bg-white hover:border-black sm:px[20px] sm:text-base">
+              <button className="h-full text-sm bg-[#ff7606] text-white font-medium rounded-full px-[10px] border-2 border-[#ff7606] duration-200 hover:text-black hover:bg-transparent hover:border-black sm:px[20px] sm:text-base">
                 Sign Up
               </button>
             </div>
@@ -41,23 +46,25 @@ const Home = () => {
         </div>
 
         {/* hero section */}
-        <div className="h-fit w-full bg-[#0f1048] flex items-center justify-center pt-[50px] px-[20px]">
+        <div className="h-fit w-full bg-[#81ebf2] flex items-center justify-center pt-[50px] px-[20px]">
           <div className="h-fit w-full max-w-[1200px] grid grid-cols-1 gap-[20px] md:grid-cols-2">
-            <div className="flex flex-col items-center justify-center py-[20px] gap-[10px] md:gap-[0px] md:items-start">
-              <p className="text-white leading-tight text-base text-center sm:text-[24px] md:text-left lg:text-[36px]">
+            <div className="flex flex-col items-center justify-center py-[20px] gap-[10px] md:items-start">
+              <p className="text-black leading-tight text-base text-center sm:text-[24px] md:text-left lg:text-[36px]">
                 Our flexible{" "}
-                <span className="text-yellow-500 leading-tight text-base text-center sm:text-[24px] md:text-left lg:text-[36px]">
+                <span className="leading-tight text-blue-700 text-base text-center sm:text-[24px] md:text-left lg:text-[36px]">
                   features
                 </span>{" "}
                 help you to quickly create great learning content for work,
                 education or fun
               </p>
-              <button className="h-[40px] bg-blue-500 rounded-full flex items-center gap-[5px] px-[20px] border border-blue-500 duration-200 hover:bg-transparent hover:border-white sm:h-[50px]">
-                <p className="text-sm text-white sm:text-base">
-                  Get started for free
-                </p>
-                <FaArrowRight size={16} color={"#FFF"} />
-              </button>
+              <Link href={"/home/quizzes"}>
+                <button className="group h-[40px] bg-[#ff7606] rounded-full flex items-center gap-[5px] px-[20px] border-2 border-[#ff7606] duration-200 hover:bg-transparent hover:border-black sm:h-[50px]">
+                  <p className="text-sm font-medium text-white duration-200 group-hover:text-black sm:text-base">
+                    Get started for free
+                  </p>
+                  <FaArrowRight size={16} className="fill-white duration-200 group-hover:fill-black" />
+                </button>
+              </Link>
             </div>
 
             <div className="h-full w-full flex items-end">
@@ -80,8 +87,8 @@ const Home = () => {
             </p>
             <div className="h-fit w-full grid grid-cols-1 gap-[20px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               <div className="h-fit w-full flex flex-col items-start gap-[10px]">
-                <div className="h-[60px] w-[60px] bg-sky-100 border border-sky-400 rounded-lg flex items-center justify-center">
-                  <LiaQuestionSolid size={40} className="fill-sky-400" />
+                <div className="h-[60px] w-[60px] bg-[#ff9d02]/10 border border-[#ff9d02] rounded-lg flex items-center justify-center">
+                  <LiaQuestionSolid size={40} className="fill-[#ff9d02]" />
                 </div>
                 <p className="text-xl text-black font-semibold">
                   Classic quizzes
@@ -91,8 +98,8 @@ const Home = () => {
                 </p>
               </div>
               <div className="h-fit w-full flex flex-col items-start gap-[10px]">
-                <div className="h-[60px] w-[60px] bg-sky-100 border border-sky-400 rounded-lg flex items-center justify-center">
-                  <LiaMicrophoneAltSolid size={40} className="fill-sky-400" />
+                <div className="h-[60px] w-[60px] bg-[#ff9d02]/10 border border-[#ff9d02] rounded-lg flex items-center justify-center">
+                  <LiaMicrophoneAltSolid size={40} className="fill-[#ff9d02]" />
                 </div>
                 <p className="text-xl text-black font-semibold">Live quizzes</p>
                 <p className="text-base text-black font-normal">
@@ -100,8 +107,8 @@ const Home = () => {
                 </p>
               </div>
               <div className="h-fit w-full flex flex-col items-start gap-[10px]">
-                <div className="h-[60px] w-[60px] bg-sky-100 border border-sky-400 rounded-lg flex items-center justify-center">
-                  <PiGraduationCap size={40} className="fill-sky-400" />
+                <div className="h-[60px] w-[60px] bg-[#ff9d02]/10 border border-[#ff9d02] rounded-lg flex items-center justify-center">
+                  <PiGraduationCap size={40} className="fill-[#ff9d02]" />
                 </div>
                 <p className="text-xl text-black font-semibold">Courses</p>
                 <p className="text-base text-black font-normal">
@@ -109,8 +116,8 @@ const Home = () => {
                 </p>
               </div>
               <div className="h-fit w-full flex flex-col items-start gap-[10px]">
-                <div className="h-[60px] w-[60px] bg-sky-100 border border-sky-400 rounded-lg flex items-center justify-center">
-                  <PiHandWaving size={40} className="fill-sky-400" />
+                <div className="h-[60px] w-[60px] bg-[#ff9d02]/10 border border-[#ff9d02] rounded-lg flex items-center justify-center">
+                  <PiHandWaving size={40} className="fill-[#ff9d02]" />
                 </div>
                 <p className="text-xl text-black font-semibold">Welcome page</p>
                 <p className="text-base text-black font-normal">
@@ -118,8 +125,8 @@ const Home = () => {
                 </p>
               </div>
               <div className="h-fit w-full flex flex-col items-start gap-[10px]">
-                <div className="h-[60px] w-[60px] bg-sky-100 border border-sky-400 rounded-lg flex items-center justify-center">
-                  <TfiLayoutSlider size={40} className="fill-sky-400" />
+                <div className="h-[60px] w-[60px] bg-[#ff9d02]/10 border border-[#ff9d02] rounded-lg flex items-center justify-center">
+                  <TfiLayoutSlider size={40} className="fill-[#ff9d02]" />
                 </div>
                 <p className="text-xl text-black font-semibold">Info slides</p>
                 <p className="text-base text-black font-normal">
@@ -128,8 +135,8 @@ const Home = () => {
                 </p>
               </div>
               <div className="h-fit w-full flex flex-col items-start gap-[10px]">
-                <div className="h-[60px] w-[60px] bg-sky-100 border border-sky-400 rounded-lg flex items-center justify-center">
-                  <BiImageAdd size={40} className="fill-sky-400" />
+                <div className="h-[60px] w-[60px] bg-[#ff9d02]/10 border border-[#ff9d02] rounded-lg flex items-center justify-center">
+                  <BiImageAdd size={40} className="fill-[#ff9d02]" />
                 </div>
                 <p className="text-xl text-black font-semibold">Add media</p>
                 <p className="text-base text-black font-normal">
@@ -137,8 +144,8 @@ const Home = () => {
                 </p>
               </div>
               <div className="h-fit w-full flex flex-col items-start gap-[10px]">
-                <div className="h-[60px] w-[60px] bg-sky-100 border border-sky-400 rounded-lg flex items-center justify-center">
-                  <BsFolderPlus size={40} className="fill-sky-400" />
+                <div className="h-[60px] w-[60px] bg-[#ff9d02]/10 border border-[#ff9d02] rounded-lg flex items-center justify-center">
+                  <BsFolderPlus size={40} className="fill-[#ff9d02]" />
                 </div>
                 <p className="text-xl text-black font-semibold">
                   Add documents
@@ -148,8 +155,8 @@ const Home = () => {
                 </p>
               </div>
               <div className="h-fit w-full flex flex-col items-start gap-[10px]">
-                <div className="h-[60px] w-[60px] bg-sky-100 border border-sky-400 rounded-lg flex items-center justify-center">
-                  <PiFlowerBold size={40} className="fill-sky-400" />
+                <div className="h-[60px] w-[60px] bg-[#ff9d02]/10 border border-[#ff9d02] rounded-lg flex items-center justify-center">
+                  <PiFlowerBold size={40} className="fill-[#ff9d02]" />
                 </div>
                 <p className="text-xl text-black font-semibold">
                   Thank you page
@@ -172,7 +179,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default Home;
