@@ -40,10 +40,17 @@ const HomePage = ({ topic, country }) => {
   const router = useRouter();
 
   async function fetchData() {
+    // Create an AbortController instance
+    const controller = new AbortController();
+
+    // Obtain a reference to the AbortSignal
+    const signal = controller.signal;
+
     setIsLoading(true);
 
     if (topic !== undefined && topic !== null) {
       const response = fetch(`/api/get`, {
+        signal,
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -61,7 +68,7 @@ const HomePage = ({ topic, country }) => {
             router.push("/");
           }
           data.result.languageContent = language[`${data.result.language}`];
-          console.log("data", data.result);
+          // console.log("data", data.result);
           setData(data.result);
           // let length = data?.result?.question_list?.length;
 
@@ -71,16 +78,24 @@ const HomePage = ({ topic, country }) => {
             localStorage.setItem("data", JSON.stringify({ data: data.result }));
           }
           setIsLoading(false);
-          console.log("done");
+          // console.log("done");
           return;
+        })
+        .catch((error) => {
+          // If the request was aborted, do nothing
+          if (error.name === "AbortError") return;
+          // Otherwise, handle the error here or throw it back to the console
+          throw error;
         });
+      // controller.abort();
     }
 
     //
   }
 
   useEffect(() => {
-    fetchData();
+    // console.log("topic:", topic);
+    if (topic !== data?.topic) fetchData();
   }, [topic]);
 
   useEffect(() => {

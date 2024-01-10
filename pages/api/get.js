@@ -9,12 +9,18 @@ import Templates from "@/models/template";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const { name } = await req.body;
-    console.log("name", name);
+    // console.log("name", name);
     // Process a POST request
     try {
       await connectToDB();
 
       const result = await Templates.findOne({ topic: name });
+
+      await Templates.findOneAndUpdate(
+        { topic: name },
+        { $inc: { __v: 1 } }
+        // { upsert: true }
+      );
 
       if (result) {
         res.status(200).json({ result });
