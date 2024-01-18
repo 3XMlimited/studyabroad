@@ -89,6 +89,7 @@ export default async function handler(req, res) {
             fields: {
               FirstName: name,
               Country: country,
+              Tags: topic,
               Topic: topic,
               Date: moment().format("YYYY-MM-DD"),
             },
