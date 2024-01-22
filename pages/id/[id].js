@@ -12,7 +12,7 @@ const page = ({ country }) => {
   let pathname = usePathname();
   const [fb, setFb] = useState({});
   const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState(null);
   country = decodeURIComponent(country);
 
@@ -47,7 +47,7 @@ const page = ({ country }) => {
       console.log(error);
     }
   };
-  console.log(country);
+
   const fetchEmail = async () => {
     setIsLoading(true);
 
@@ -75,12 +75,12 @@ const page = ({ country }) => {
   }, [pathname]);
 
   return (
-    <div className="text-black ids_text bg-white h-screen  overflow-y-scroll ">
+    <div className="text-black ids_text bg-white h-screen  overflow-y-scroll relative ">
       {/* Loading */}
 
       {/* header */}
-      <div className="flex justify-center items-end shadow-md max-h-[100px] relative">
-        <div className="w-[95vw] m-auto flex justify-center  py-0 px-[15px]">
+      <div className="flex justify-center  items-end shadow-md max-h-[100px] relative   bg-gradient-to-t from-[#81ebf2] to-[#c7fffa]  ">
+        <div className="w-[95vw] m-auto flex md:justify-center justify-start  py-0 px-[15px]">
           <div className="flex justify-center">
             <div className="flex justify-center items-center">
               <div className="flex justify-center my-2">
@@ -101,26 +101,40 @@ const page = ({ country }) => {
             <div className="  text-black divide-y divide-black ">
               {/* title */}
               <div className="flex justify-center pb-[25px]">
-                <h1 className="font-bold md:text-[40px] text-[20px]">
+                <h1 className="font-bold md:text-[40px] text-[24px] text-center">
                   {fb?.name}
                 </h1>
               </div>
               {/* form */}
-              <div className="relative w-[100%] h-[200px] bg-black flex justify-center items-center rounded-md">
+              <div className="relative w-[100%] h-[300px]  flex flex-col justify-center items-center ">
+                <div className="w-[100%] flex justify-between items-center px-20 ">
+                  <Image src="/logo.jpg" width={50} height={50} alt="logo" />
+                  <h1 className="font-bold items-center md:text-[40px] text-[20px]">
+                    ESQUIZ
+                  </h1>
+                </div>
+                <div className="py-[15px] font-normal whitespace-normal text-center">
+                  <p>
+                    Subscribe to Esquiz newsletter. Join our +100,000 community
+                    for the latest trends.
+                  </p>
+                </div>
                 <input
-                  className="md:w-[80%] w-[90%] h-[60px]  rounded-md pl-8 py-2 shadow-md font-semibold"
+                  className="w-[100%] h-[60px] border-2 border-[#F6CD77]  rounded-md pl-8 py-2 shadow-md font-semibold"
                   value={email}
+                  placeholder="Enter your email "
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <button
-                  className="bg-[#F6CD77] px-4 py-2 rounded-md absolute md:right-20 right-5 font-bold"
+                  className="bg-[#F6CD77] px-6 py-4  md:absolute md:right-0   md:top-[179px] font-bold block mt-2 w-[100%] rounded-md md:w-[20%] md:flex md:mt-0 md:rounded-none "
                   onClick={fetchEmail}
                 >
-                  Send
+                  Subscribe
                 </button>
               </div>
+
               {/* content */}
-              <div className="py-[25px] font-semibold whitespace-normal">
+              <div className="py-[25px] font-semibold whitespace-normal ">
                 <p> {data?.content}</p>
               </div>
 
@@ -142,10 +156,34 @@ const page = ({ country }) => {
             </div>
           </div>
         )}
+
+        {/* footer section */}
+        {!isLoading && (
+          <div className="h-full w-full bg-white flex items-center justify-center px-[20px]">
+            <div className="h-full w-full max-w-[1200px] flex flex-col items-center justify-center border-t border-t-gray-300 divide-y-2 space-y-10">
+              <p className="text-sm text-black text-center mt-[35px]">
+                2024 © esquiz All rights reserved
+              </p>
+              <div className="  text-[10px]">
+                <p className="text-[14px] font-semibold  mt-[10px]">
+                  Disclaimer
+                </p>
+                <p>
+                  The information provided on this website is for general
+                  informational purposes only and is not a substitute for
+                  professional advice. Please seek professional advice before
+                  following any tips or recommendations. The website does not
+                  endorse or promote any specific product or service mentioned
+                  on the site, and any product or service reviews are public
+                  information and personal opinions of the author(s) and / or
+                  contributors. By using this website, you acknowledge and
+                  accept the above disclaimer. For more information.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-      {/* <div className="flex justify-center mt-32">
-        <p className="text-[48px] leading-4 font-semibold"> {fb?.name}</p>
-      </div> */}
     </div>
   );
 };

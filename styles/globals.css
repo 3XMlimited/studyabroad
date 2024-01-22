@@ -27,7 +27,7 @@ body{
 }
 
   .container {
-    @apply w-[100%] max-w-[800px] ml-auto mr-auto px-[32px] py-0 pb-[48px];
+    @apply w-[100%] max-w-[800px] ml-auto mr-auto md:px-[32px] py-0 pb-[48px] px-0;
     
 
   }
