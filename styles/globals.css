@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
 
 body{
     margin: 0;
@@ -20,3 +22,12 @@ body{
     color: #000 !important;
     font-style: normal !important;
 }
+.ids_text {
+    font-family: 'Fjalla One', sans-serif;
+}
+
+  .container {
+    @apply w-[100%] max-w-[800px] ml-auto mr-auto px-[32px] py-0 pb-[48px];
+    
+
+  }
