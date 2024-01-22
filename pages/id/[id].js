@@ -143,6 +143,7 @@ const page = ({ country }) => {
                 {data?.domains?.map((d, i) => (
                   <Link
                     href={data?.domains_url[i]}
+                    target="_blank"
                     className="bg-[#F6CD77] hover:bg-blue-400 flex justify-between p-4 border-4 border-black rounded-xl my-4"
                   >
                     <div className="flex gap-2 items-center mt-0.5">
@@ -165,7 +166,7 @@ const page = ({ country }) => {
                 2024 © esquiz All rights reserved
               </p>
               <div className="  text-[10px]">
-                <p className="text-[14px] font-semibold  mt-[10px]">
+                <p className="md:text-[20px] text-[14px] font-semibold  mt-[10px]">
                   Disclaimer
                 </p>
                 <p>
