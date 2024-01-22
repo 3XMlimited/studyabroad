@@ -107,9 +107,9 @@ const page = ({ country }) => {
               </div>
               {/* form */}
               <div className="relative w-[100%] h-[300px]  flex flex-col justify-center items-center ">
-                <div className="w-[100%] flex justify-between items-center px-20 ">
+                <div className="w-[100%] flex justify-between items-center px-10 ">
                   <Image src="/logo.jpg" width={50} height={50} alt="logo" />
-                  <h1 className="font-bold items-center md:text-[40px] text-[20px]">
+                  <h1 className="font-bold items-center text-[35px] ">
                     ESQUIZ
                   </h1>
                 </div>
