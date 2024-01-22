@@ -14,6 +14,8 @@ const page = ({ country }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [finish, setFinish] = useState(false);
   country = decodeURIComponent(country);
 
   const fetchHeadline = async () => {
@@ -49,25 +51,31 @@ const page = ({ country }) => {
   };
 
   const fetchEmail = async () => {
+    setErrorMsg(null);
     setIsLoading(true);
-
-    try {
-      const response = await fetch("/api/db", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          topic: data.tags,
-          id: data.forms,
-          name: "",
-          country,
-        }),
-      });
-      const result = await response.json();
-      console.log("result", result);
-    } catch (error) {
-      console.log(error);
+    if (email !== null && email.length > 0) {
+      try {
+        const response = await fetch("/api/db", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            topic: data.tags,
+            id: data.forms,
+            name: "",
+            country,
+          }),
+        });
+        const result = await response.json();
+        console.log("result", result);
+        setFinish(true);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      setErrorMsg("Invalid email");
     }
+
     setIsLoading(false);
   };
   useEffect(() => {
@@ -101,7 +109,7 @@ const page = ({ country }) => {
             <div className="  text-black divide-y divide-black ">
               {/* title */}
               <div className="flex justify-center pb-[25px]">
-                <h1 className="font-bold md:text-[40px] text-[24px] text-center">
+                <h1 className="font-bold md:text-[40px] text-[24px] md:text-center text-left">
                   {fb?.name}
                 </h1>
               </div>
@@ -119,17 +127,27 @@ const page = ({ country }) => {
                     for the latest trends.
                   </p>
                 </div>
+                {errorMsg && (
+                  <p className="text-red-500 pl-4  w-[100%]">
+                    Invalid Email !!
+                  </p>
+                )}
                 <input
-                  className="w-[100%] h-[60px] border-2 border-[#F6CD77]  rounded-md pl-8 py-2 shadow-md font-semibold"
+                  className={`w-[100%] h-[60px] border-2 ${
+                    !finish ? "border-[#F6CD77]" : "border-[#81ebf2]"
+                  }  rounded-md pl-8 py-2 shadow-md font-semibold focus:ring-0 ring-0 outline-none bg-white`}
                   value={email}
                   placeholder="Enter your email "
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <button
-                  className="bg-[#F6CD77] px-6 md:pl-8 py-4  md:absolute md:right-0   md:top-[175px]  font-bold block mt-2 w-[100%] rounded-md md:w-[20%] md:flex md:mt-0 md:rounded-none "
+                  className={`${
+                    !finish ? "bg-[#F6CD77]" : "bg-[#81ebf2]"
+                  } px-6 md:pl-8 py-4  md:absolute md:right-0   md:top-[175px]  font-bold block mt-2 w-[100%] rounded-md md:w-[20%] md:flex md:mt-0 md:rounded-none  `}
                   onClick={fetchEmail}
+                  disabled={finish}
                 >
-                  Subscribe
+                  {finish ? "Thank you!" : " Subscribe"}
                 </button>
               </div>
 
@@ -141,7 +159,7 @@ const page = ({ country }) => {
               {/* domain */}
               <div className="pt-[25px]">
                 {data?.domains?.map((d, i) => (
-                  <Link
+                  <a
                     href={data?.domains_url[i]}
                     target="_blank"
                     className="bg-[#F6CD77] hover:bg-blue-400 flex justify-between p-4 border-4 border-black rounded-xl my-4"
@@ -151,7 +169,7 @@ const page = ({ country }) => {
                       <p className="font-black text-xl">{d}</p>
                     </div>
                     <p className="text-blue-500 font-black text-xl">{">"}</p>
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
