@@ -126,7 +126,7 @@ const page = ({ country }) => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <button
-                  className="bg-[#F6CD77] px-6 py-4  md:absolute md:right-0   md:top-[179px] font-bold block mt-2 w-[100%] rounded-md md:w-[20%] md:flex md:mt-0 md:rounded-none "
+                  className="bg-[#F6CD77] px-6 md:pl-8 py-4  md:absolute md:right-0   md:top-[175px]  font-bold block mt-2 w-[100%] rounded-md md:w-[20%] md:flex md:mt-0 md:rounded-none "
                   onClick={fetchEmail}
                 >
                   Subscribe
