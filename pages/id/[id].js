@@ -34,6 +34,7 @@ const page = ({ country }) => {
     }
     await fetchData();
   };
+
   const fetchData = async () => {
     try {
       const response = await fetch("/api/ads", {
@@ -42,7 +43,7 @@ const page = ({ country }) => {
         body: JSON.stringify(pathname?.split("/")[2]),
       });
       const result = await response.json();
-      // console.log("result", result);
+      console.log("result", result);
       setData(result);
       setIsLoading(false);
     } catch (error) {
@@ -143,11 +144,11 @@ const page = ({ country }) => {
                 <button
                   className={`${
                     !finish ? "bg-[#F6CD77]" : "bg-[#81ebf2]"
-                  } px-6 md:pl-8 py-4  md:absolute md:right-0   md:top-[175px]  font-bold block mt-2 w-[100%] rounded-md md:w-[20%] md:flex md:mt-0 md:rounded-none  `}
+                  } px-6 md:pl-8 py-4  md:absolute md:right-0.5   md:top-[174.5px]  font-bold block mt-2 w-[100%] rounded-md md:w-[20%] md:flex md:mt-0 md:rounded-none  `}
                   onClick={fetchEmail}
                   disabled={finish}
                 >
-                  {finish ? "Thank you!" : " Subscribe"}
+                  {finish ? "Thank you" : " Subscribe"}
                 </button>
               </div>
 
