@@ -11,6 +11,12 @@ export default async function handler(req, res) {
       await connectToDB("Template");
 
       const ads = await Ads.findOne({ ad_id: id });
+      await Ads.findOneAndUpdate(
+        { ad_id: id },
+        { $inc: { __v: 1 } }
+        // { upsert: true }
+      );
+
       return res.json(ads);
     } catch (error) {
       console.log(error);

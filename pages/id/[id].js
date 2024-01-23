@@ -153,9 +153,15 @@ const page = ({ country }) => {
               </div>
 
               {/* content */}
-              <div className="py-[25px] font-semibold whitespace-normal ">
+              <div
+                className="py-[25px]"
+                dangerouslySetInnerHTML={{
+                  __html: `<div id="buttonLink">${data?.content}</div>`,
+                }}
+              />
+              {/* <div className="py-[25px] font-semibold whitespace-normal ">
                 <p> {data?.content}</p>
-              </div>
+              </div> */}
 
               {/* domain */}
               <div className="pt-[25px]">
