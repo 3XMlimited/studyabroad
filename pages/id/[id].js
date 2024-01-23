@@ -111,7 +111,7 @@ const page = ({ country }) => {
               {/* title */}
               <div className="flex justify-center pb-[25px]">
                 <h1 className="font-bold md:text-[40px] text-[24px] md:text-center text-left">
-                  {fb?.name}
+                  {data?.headline ? data?.headline : fb?.name}
                 </h1>
               </div>
               {/* form */}
