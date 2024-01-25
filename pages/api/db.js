@@ -86,10 +86,10 @@ export default async function handler(req, res) {
           body: JSON.stringify({
             email_address: email,
             api_key: process.env.octopus_api,
+            tags: [topic],
             fields: {
               FirstName: name,
               Country: country,
-              Tags: topic,
               Topic: topic,
               Date: moment().format("YYYY-MM-DD"),
             },

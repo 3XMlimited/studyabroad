@@ -76,7 +76,7 @@ const fetch_ads = async (campaign) => {
         );
         // console.log(response.data);
         const data = await response.json();
-        //   console.log(data);
+        console.log(data.data[0].object_story_spec);
         return data.data[0].object_story_spec.link_data;
       } catch (error) {
         console.log(error);
@@ -101,4 +101,6 @@ export default async function handler(req, res) {
   }
 }
 
-100;
+// fetch_ads("120204061112890726");
+
+
