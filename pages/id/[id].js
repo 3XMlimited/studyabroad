@@ -76,7 +76,6 @@ const page = ({ country }) => {
     } else {
       setErrorMsg("Invalid email");
     }
-
     setIsLoading(false);
   };
   useEffect(() => {
