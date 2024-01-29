@@ -40,6 +40,9 @@ const AdsSchema = new Schema(
       type: Boolean,
       required: [true, "State is required"],
     },
+    beehiiv: {
+      type: Boolean,
+    },
   },
   {
     timestamps: true,
