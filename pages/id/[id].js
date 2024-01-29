@@ -65,7 +65,7 @@ const page = ({ country }) => {
             id: data.forms,
             name: "",
             country,
-            beehiv: data.beehiiv,
+            beehiiv: data.beehiiv,
           }),
         });
         const result = await response.json();
