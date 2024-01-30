@@ -14,7 +14,7 @@ const page = ({ country }) => {
   const [isLoading, setIsLoading] = useState(false);
   country = decodeURIComponent(country);
   const fetchData = async () => {
-    console.log("pathname", pathname?.split("/")[2]);
+    // console.log("pathname", pathname?.split("/")[2]);
     setIsLoading(true);
     let url = "";
     if (pathname) {
@@ -31,11 +31,12 @@ const page = ({ country }) => {
       const result = await response.json();
 
       if (result) {
-        console.log(result);
+        // console.log(result);
         //   let urlList = result.find(
         //     (d) => d.widget.toString() === pathname.split("/")[1]
         //   );
-        if (result.case === "All") {
+
+        if (result.case.includes("All")) {
           let uri = result.url?.action;
           let urls = [];
 
