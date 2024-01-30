@@ -122,11 +122,3 @@ export default async function handler(req, res) {
     // Handle any other HTTP method
   }
 }
-
-// account1 - ok wallet
-// 0xec24b6e04c3541331a0cac55f3ab43bd54d8e511@dmail.ai
-// kucey-cu6xt-q2dmx-pttzi-rxx3u-622so-vp72p-wyb4h-wndhx-pn2dh-dqe
-
-// account2 - metamask
-// 0xba2cee8cd88abbf1be41b2a87ffa7125f1504f17@dmail.ai
-// nmunp-sceyl-hg225-4trwe-kxgao-qwuj7-tijpz-zvkp4-gdxii-nmait-sqe
