@@ -126,45 +126,51 @@ const Template1 = () => {
           {data?.fields &&
           Array.isArray(data?.fields) &&
           data?.fields?.length > 0 ? (
-            data?.fields?.map((item, i) => {
-              if (item?.value?.toLowerCase() === "address") {
-                return (
-                  <textarea
-                    key={i}
-                    placeholder={item?.label}
-                    rows={3}
-                    className="bg-white  w-full p-[3px_3px_3px_12px] text-black placeholder:text-black shadow-[2px_5px_0px_4px_rgba(0,0,0,0.2)] outline-none border border-[#888] hover:border-[#000] focus-visible:border-[#00F] resize-none"
-                    value={details[item?.value]}
-                    onChange={(e) => {
-                      setDetails((p) => {
-                        return {
-                          ...p,
-                          [item?.value]: e.target.value,
-                        };
-                      });
-                    }}
-                  />
-                );
-              } else {
-                return (
-                  <input
-                    type="text"
-                    placeholder={item?.label}
-                    key={i}
-                    className="bg-white w-full h-[42px] p-[3px_3px_3px_12px] text-black placeholder:text-black shadow-[2px_5px_0px_4px_rgba(0,0,0,0.2)] outline-none border border-[#888] hover:border-[#000] focus-visible:border-[#00F]"
-                    value={details[item?.value]}
-                    onChange={(e) => {
-                      setDetails((p) => {
-                        return {
-                          ...p,
-                          [item?.value]: e.target.value,
-                        };
-                      });
-                    }}
-                  />
-                );
-              }
-            })
+            data?.fields
+              ?.filter((f) => f?.value?.toLowerCase() !== "address")
+              ?.map((item, i) => (
+                <input
+                  type="text"
+                  placeholder={item?.label}
+                  key={i}
+                  className="w-full h-[42px] p-[3px_3px_3px_12px] text-black placeholder:text-black shadow-[2px_5px_0px_4px_rgba(0,0,0,0.2)] outline-none border border-[#888] hover:border-[#000] focus-visible:border-[#00F]"
+                  value={details[item?.value]}
+                  onChange={(e) => {
+                    setDetails((p) => {
+                      return {
+                        ...p,
+                        [item?.value]: e.target.value,
+                      };
+                    });
+                  }}
+                />
+              ))
+          ) : (
+            <></>
+          )}
+
+          {data?.fields &&
+          Array.isArray(data?.fields) &&
+          data?.fields?.length > 0 ? (
+            data?.fields
+              ?.filter((f) => f?.value?.toLowerCase() === "address")
+              ?.map((item, i) => (
+                <textarea
+                  placeholder={item?.label}
+                  rows={3}
+                  key={i}
+                  className="w-full p-[3px_3px_3px_12px] text-black placeholder:text-black shadow-[2px_5px_0px_4px_rgba(0,0,0,0.2)] outline-none border border-[#888] hover:border-[#000] focus-visible:border-[#00F] resize-none"
+                  value={details[item?.value]}
+                  onChange={(e) => {
+                    setDetails((p) => {
+                      return {
+                        ...p,
+                        [item?.value]: e.target.value,
+                      };
+                    });
+                  }}
+                />
+              ))
           ) : (
             <></>
           )}
