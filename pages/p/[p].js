@@ -69,7 +69,7 @@ const Template1 = () => {
       setDisplayErrorMsg(false);
       await fetchSubmit();
       // RUN API HERE - the inputs are all inside that input object
-      window.alert(JSON.stringify(details));
+      //   window.alert(JSON.stringify(details));
       router.push(data?.thankyou);
     }
   };
