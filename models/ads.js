@@ -35,7 +35,6 @@ const AdsSchema = new Schema(
     forms: {
       type: String,
     },
-
     state: {
       type: Boolean,
       required: [true, "State is required"],

@@ -71,7 +71,8 @@ const Beehiiv = async (email) => {
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const { id, topic, name, email, country, beehiiv } = await req.body;
-    console.log("name", name);
+    // console.log("name", name);
+
     // Process a POST request
     try {
       const response = await fetch(
@@ -118,7 +119,39 @@ export default async function handler(req, res) {
       res.json({ error: "failed to load data" });
       // res.status(500).json({ error: "failed to load data" });
     }
-  } else {
+  } else if (req.method === "PATCH") {
     // Handle any other HTTP method
+    const { data } = await req.body;
+    const id = "cda3dc92-b5bf-11ee-a15c-13cef91ec7d4"; // TOTAL
+    try {
+      const response = await fetch(
+        `https://emailoctopus.com/api/1.6/lists/${id}/contacts?api_key=` +
+          process.env.octopus_api,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // later here need to add  limit / page default limit =100
+          body: JSON.stringify({
+            email_address: data.email_address,
+            api_key: process.env.octopus_api,
+            tags: [data.products],
+            fields: data,
+          }),
+        }
+      );
+      const result = await response.json();
+
+      // if (topic === "croxroad" || beehiiv) {
+      //   await Beehiiv(email);
+      // }
+      console.log(result);
+      res.status(200).json({ result: true });
+    } catch (error) {
+      console.log(error);
+      res.json({ error: "failed to load data" });
+    }
+  } else {
   }
 }
