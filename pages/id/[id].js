@@ -69,14 +69,17 @@ const page = ({ country }) => {
           }),
         });
         const result = await response.json();
+
         console.log("result", result);
         setFinish(true);
       } catch (error) {
         console.log(error);
       }
+      window.open("/thankyou");
     } else {
       setErrorMsg("Invalid email");
     }
+
     setIsLoading(false);
   };
   useEffect(() => {
