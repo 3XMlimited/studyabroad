@@ -19,6 +19,7 @@ const Template1 = () => {
     console.log("Id", data);
     setDummy(data);
   };
+
   const fetchSubmit = async () => {
     const response = await fetch("/api/db", {
       method: "PATCH",
@@ -70,7 +71,10 @@ const Template1 = () => {
       await fetchSubmit();
       // RUN API HERE - the inputs are all inside that input object
       //   window.alert(JSON.stringify(details));
-      router.push(data?.thankyou);
+      // router.push(data?.thankyou);
+      window.open(data?.thankyou);
+
+      return;
     }
   };
 
