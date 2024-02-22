@@ -11,30 +11,40 @@ import logo from "../public/logo.jpg";
 // #ff7606
 
 const Quizzes = () => {
-  const [quizzes, setQuizzes] = useState([])
-  const [loading, setLoading] = useState(false)
-  
+  const [quizzes, setQuizzes] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const getData = async () => {
-      setLoading(true)
-      
-      await fetch(`https://thewordartisan.online/api/v1/template`)
-        .then(response => response.json())
-        .then(response => {
-          const obj = response.data
+      setLoading(true);
+
+      await fetch(
+        `https://4urm3w6a18.execute-api.ap-east-1.amazonaws.com/prod/api/v1/template`
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          const obj = response.data;
           if (obj) {
-            const fin = obj.filter(f => f?.state === true)
-            setQuizzes(fin.map(e => { return { topic: e?.topic, headline: e?.headline, image: e?.image } }))
+            const fin = obj.filter((f) => f?.state === true);
+            setQuizzes(
+              fin.map((e) => {
+                return {
+                  topic: e?.topic,
+                  headline: e?.headline,
+                  image: e?.image,
+                };
+              })
+            );
           } else {
-            setQuizzes()
+            setQuizzes();
           }
         })
-        .catch(err => console.error(err))
-        .finally(() => setLoading(false))
-    }
+        .catch((err) => console.error(err))
+        .finally(() => setLoading(false));
+    };
 
-    getData()
-  }, [])
+    getData();
+  }, []);
 
   return (
     <div className="relative h-full min-h-screen w-full bg-white grid grid-rows-[1fr_60px]">
@@ -42,8 +52,15 @@ const Quizzes = () => {
         {/* navbar */}
         <div className="sticky top-0 z-50 h-[60px] w-full bg-gradient-to-t from-[#81ebf2] to-[#c7fffa] flex items-center justify-center px-[20px]">
           <div className="h-full w-full max-w-[1200px] flex items-center justify-between">
-            <Link href="/" className="h-full flex items-center cursor-pointer duration-200 hover:opacity-50">
-              <Image src={logo} alt="logo" className="h-full w-fit min-w-[60px]" />
+            <Link
+              href="/"
+              className="h-full flex items-center cursor-pointer duration-200 hover:opacity-50"
+            >
+              <Image
+                src={logo}
+                alt="logo"
+                className="h-full w-fit min-w-[60px]"
+              />
             </Link>
           </div>
         </div>
@@ -61,14 +78,12 @@ const Quizzes = () => {
               Take as many quizzes as you want
             </p>
             {loading ? (
-              Loading({ text: 'Loading' })
+              Loading({ text: "Loading" })
             ) : (
               <div className="h-fit w-full grid grid-cols-1 gap-[30px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {quizzes.map((e, i) => (
                   <Link href={`/${e?.topic}`} target="_blank" key={i}>
-                    <div
-                      className="group h-fit w-full grid grid-rows-[200px_1fr_40px] gap-[10px] bg-gray-50 shadow-md rounded-lg p-4 cursor-pointer sm:min-h-full"
-                    >
+                    <div className="group h-fit w-full grid grid-rows-[200px_1fr_40px] gap-[10px] bg-gray-50 shadow-md rounded-lg p-4 cursor-pointer sm:min-h-full">
                       <div className="relative h-[200px] w-full rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden">
                         <Image
                           src={e?.image}
