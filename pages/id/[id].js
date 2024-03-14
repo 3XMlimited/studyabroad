@@ -191,12 +191,9 @@ const page = ({ country }) => {
           <div className="h-full w-full bg-white flex items-center justify-center px-[20px]">
             <div className="h-full w-full max-w-[1200px] flex flex-col items-center justify-center border-t border-t-gray-300 divide-y-2">
               <div className="h-fit w-full flex items-center justify-between gap-2.5 py-5">
-                <div className="flex items-center gap-[5px]">
-                  <Link href={'/home/privacy-policy'} className="text-sm cursor-pointer hover:opacity-50">Privacy Policy</Link>
-                  <p>&#8226;</p>
-                  <Link href={'/home/contact'} className="text-sm cursor-pointer hover:opacity-50">Contact</Link>
-                </div>
-                <p className="text-sm text-black text-center">
+                <Link href={'/home/privacy-policy'} className="text-sm font-semibold cursor-pointer hover:opacity-50">Privacy Policy</Link>
+                <Link href={'/home/contact'} className="text-sm font-semibold cursor-pointer hover:opacity-50">Contact</Link>
+                <p className="text-sm font-semibold text-black text-center">
                   2024 © esquiz All rights reserved
                 </p>
               </div>
