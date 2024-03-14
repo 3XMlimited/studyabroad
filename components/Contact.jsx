@@ -42,21 +42,21 @@ const Contact = () => {
             <div className="h-fit w-fit max-w-[600px] p-5 rounded-[20px] shadow-[0px_2px_8px_0px_rgba(0,0,0,0.1)] flex flex-col items-center justify-center gap-2.5 sm:p-10">
                 <Image src={logo} alt="logo" className="h-[60px] w-fit rounded-lg" />
                 <p className="text-[24px] font-semibold">Contact Us</p>
-                <div className="h-fit w-full grid grid-cols-[50px_1fr] items-center gap-2.5">
+                <div className="h-fit w-full grid grid-cols-[50px_1fr] gap-2.5">
                     <div className="w-[50px] h-[50px] rounded-full bg-[#ff9d02]/20 flex items-center justify-center"><IoCall size={30} color={'#ff9d02'}/></div>
                     <div>
                         <p className="font-medium">Phone:</p>
                         <a href="tel:+6585404053" className="duration-100 hover:text-[#ff9d02]">+6585404053</a> 
                     </div>
                 </div>
-                <div className="h-fit w-full grid grid-cols-[50px_1fr] items-center gap-2.5">
+                <div className="h-fit w-full grid grid-cols-[50px_1fr] gap-2.5">
                     <div className="w-[50px] h-[50px] rounded-full bg-[#ff9d02]/20 flex items-center justify-center"><IoMail size={30} color={'#ff9d02'}/></div>
                     <div>
                         <p className="font-medium">Email:</p>
                         <a href="mailto:info@esquiz.com" className="duration-100 hover:text-[#ff9d02]">info@esquiz.com</a> 
                     </div>
                 </div>
-                <div className="h-fit w-full grid grid-cols-[50px_1fr] items-center gap-2.5">
+                <div className="h-fit w-full grid grid-cols-[50px_1fr] gap-2.5">
                     <div className="w-[50px] h-[50px] rounded-full bg-[#ff9d02]/20 flex items-center justify-center"><IoLocation size={30} color={'#ff9d02'}/></div>
                     <div>
                         <p className="font-medium">Address:</p>

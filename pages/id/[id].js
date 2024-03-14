@@ -189,15 +189,23 @@ const page = ({ country }) => {
         {/* footer section */}
         {!isLoading && (
           <div className="h-full w-full bg-white flex items-center justify-center px-[20px]">
-            <div className="h-full w-full max-w-[1200px] flex flex-col items-center justify-center border-t border-t-gray-300 divide-y-2 space-y-10">
-              <p className="text-sm text-black text-center mt-[35px]">
-                2024 © esquiz All rights reserved
-              </p>
+            <div className="h-full w-full max-w-[1200px] flex flex-col items-center justify-center border-t border-t-gray-300 divide-y-2">
+              <div className="h-fit w-full flex items-center justify-between gap-2.5 py-5">
+                <div className="flex items-center gap-[5px]">
+                  <Link href={'/home/privacy-policy'} className="text-sm cursor-pointer hover:opacity-50">Privacy Policy</Link>
+                  <p>&#8226;</p>
+                  <Link href={'/home/contact'} className="text-sm cursor-pointer hover:opacity-50">Contact</Link>
+                </div>
+                <p className="text-sm text-black text-center">
+                  2024 © esquiz All rights reserved
+                </p>
+              </div>
+
               <div className="text-[12px]">
-                <p className="md:text-[20px] text-[14px] font-semibold  mt-[10px]">
+                <p className="font-semibold mt-[10px]">
                   Disclaimer
                 </p>
-                <p>
+                <p className="text-[10px] text-justify">
                   The information provided on this website is for general
                   informational purposes only and is not a substitute for
                   professional advice. Please seek professional advice before
@@ -208,11 +216,6 @@ const page = ({ country }) => {
                   contributors. By using this website, you acknowledge and
                   accept the above disclaimer. For more information.
                 </p>
-                <div className="flex items-center mt-2.5 gap-[5px]">
-                  <Link href={'/home/privacy-policy'} className="cursor-pointer hover:opacity-50">Privacy Policy</Link>
-                  <p>&#8226;</p>
-                  <Link href={'/home/contact'} className="cursor-pointer hover:opacity-50">Contact</Link>
-                </div>
               </div>
             </div>
           </div>
