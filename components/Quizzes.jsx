@@ -52,16 +52,24 @@ const Quizzes = () => {
         {/* navbar */}
         <div className="sticky top-0 z-50 h-[60px] w-full bg-gradient-to-t from-[#81ebf2] to-[#c7fffa] flex items-center justify-center px-[20px]">
           <div className="h-full w-full max-w-[1200px] flex items-center justify-between">
-            <Link
-              href="/"
-              className="h-full flex items-center cursor-pointer duration-200 hover:opacity-50"
-            >
-              <Image
-                src={logo}
-                alt="logo"
-                className="h-full w-fit min-w-[60px]"
-              />
-            </Link>
+            <div className="h-full flex items-center">
+              <Image src={logo} alt="logo" className="h-full w-fit min-w-[60px]" />
+            </div>
+            <div className="h-full flex items-center gap-[10px] py-[10px]">
+              <button className="h-full text-sm text-[#ff7606] font-medium px-[10px] pointer-events-none duration-200 sm:text-base" >
+                QUIZZES
+              </button>
+              <Link href={"/home/privacy-policy"}>
+                <button className="h-full text-sm text-black font-medium px-[10px] duration-200 hover:text-[#ff7606] sm:text-base" >
+                  Privacy Policy
+                </button>
+              </Link>
+              <Link href={"/home/contact"}>
+                <button className="h-full text-sm text-black font-medium px-[10px] duration-200 hover:text-[#ff7606] sm:text-base" >
+                  Contact
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -119,7 +127,7 @@ const Quizzes = () => {
       <div className="h-full w-full bg-white flex items-center justify-center px-[20px]">
         <div className="h-full w-full max-w-[1200px] flex items-center justify-center border-t border-t-gray-300">
           <p className="text-sm text-black text-center">
-            Copyright © esquiz Pty Ltd
+            Copyright © esquiz Pvt Ltd
           </p>
         </div>
       </div>

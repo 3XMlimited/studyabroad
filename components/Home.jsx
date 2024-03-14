@@ -27,11 +27,18 @@ const Home = () => {
             </div>
             <div className="h-full flex items-center gap-[10px] py-[10px]">
               <Link href={"/home/quizzes"}>
-                <button
-                  className="h-full text-sm text-black font-medium px-[10px] duration-200 hover:text-[#ff7606] sm:text-base"
-                  // onClick={() => window.alert("quizes pressed")}
-                >
+                <button className="h-full text-sm text-black font-medium px-[10px] duration-200 hover:text-[#ff7606] sm:text-base" >
                   QUIZZES
+                </button>
+              </Link>
+              <Link href={"/home/privacy-policy"}>
+                <button className="h-full text-sm text-black font-medium px-[10px] duration-200 hover:text-[#ff7606] sm:text-base" >
+                  Privacy Policy
+                </button>
+              </Link>
+              <Link href={"/home/contact"}>
+                <button className="h-full text-sm text-black font-medium px-[10px] duration-200 hover:text-[#ff7606] sm:text-base" >
+                  Contact
                 </button>
               </Link>
 
@@ -174,7 +181,7 @@ const Home = () => {
       <div className="h-full w-full bg-white flex items-center justify-center px-[20px]">
         <div className="h-full w-full max-w-[1200px] flex items-center justify-center border-t border-t-gray-300">
           <p className="text-sm text-black text-center">
-            Copyright © esquiz Pty Ltd
+            Copyright © esquiz Pvt Ltd
           </p>
         </div>
       </div>
