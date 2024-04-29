@@ -69,7 +69,6 @@ const Beehiiv = async (email) => {
 };
 
 const fetchIgalfer = async (data) => {
-  console.log(data);
   try {
     const response = await fetch(`https://goatrack.io/api/igalfer`, {
       method: "POST",
@@ -149,6 +148,10 @@ export default async function handler(req, res) {
     // Handle any other HTTP method
     const { data } = await req.body;
     const id = "cda3dc92-b5bf-11ee-a15c-13cef91ec7d4"; // TOTAL
+
+    // test
+    await fetchIgalfer(data);
+
     try {
       const response = await fetch(
         `https://emailoctopus.com/api/1.6/lists/${id}/contacts?api_key=` +
@@ -169,13 +172,7 @@ export default async function handler(req, res) {
       );
       const result = await response.json();
 
-      // if (topic === "croxroad" || beehiiv) {
-      //   await Beehiiv(email);
-      // }
-      console.log(result);
-
-      // test
-      await fetchIgalfer(data);
+      // console.log(result);
 
       res.status(200).json({ result: true });
     } catch (error) {

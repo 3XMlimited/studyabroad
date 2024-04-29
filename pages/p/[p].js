@@ -27,7 +27,7 @@ const Template1 = () => {
       body: JSON.stringify({ data: details }),
     });
     const data = await response.json();
-    console.log("Id", data);
+    // console.log("Id", data);
   };
 
   useEffect(() => {
