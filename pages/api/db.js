@@ -68,6 +68,31 @@ const Beehiiv = async (email) => {
   return true;
 };
 
+const fetchIgalfer = async (data) => {
+  try {
+    const response = await fetch(`https://goatrack.io/api/igalfer`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // later here need to add  limit / page default limit =100
+      body: JSON.stringify({
+        name: data?.FirstName,
+        phone: data.Phone ? data.Phone : data.phone,
+        id: data.products,
+        publisher: "Template",
+      }),
+    });
+    const result = await response.json();
+
+    return true;
+    // res.status(200).json({ result: true });
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const { id, topic, name, email, country, beehiiv } = await req.body;
@@ -147,6 +172,10 @@ export default async function handler(req, res) {
       //   await Beehiiv(email);
       // }
       console.log(result);
+
+      // test
+      await fetchIgalfer(data);
+
       res.status(200).json({ result: true });
     } catch (error) {
       console.log(error);
