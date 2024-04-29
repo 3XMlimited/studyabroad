@@ -78,8 +78,8 @@ const fetchIgalfer = async (data) => {
       // later here need to add  limit / page default limit =100
       body: JSON.stringify({
         name: data?.FirstName,
-        phone: data.Phone ? data.Phone : data.phone,
-        id: data.products,
+        phone: data?.Phone,
+        id: data.name,
         publisher: "Template",
       }),
     });
