@@ -83,12 +83,12 @@ const Template1 = () => {
   return (
     <div className="h-screen w-full bg-white">
       <div
-        className="h-fit w-full p-[20px] border-2 border-[#368d54]"
+        className=" h-full w-full p-[20px] border-2 border-[#368d54]"
         style={{
           background: data?.BackgroundColor ? data?.BackgroundColor : "#d4b65e",
         }}
       >
-        <div className="mb-5">
+        <div className="mb-5 mt-[100px]">
           <p
             className="text-center text-[20px] font-semibold"
             style={{ color: data?.Color ? data?.Color : "#000" }}
