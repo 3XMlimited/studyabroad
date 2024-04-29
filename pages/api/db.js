@@ -80,7 +80,7 @@ const Igalfer = async (data, name) => {
       body: JSON.stringify({
         name: data?.FirstName,
         phone: data?.Phone,
-        id: name,
+        id: Number(name) ? Number(name) : name,
         publisher: "Template",
       }),
     });
