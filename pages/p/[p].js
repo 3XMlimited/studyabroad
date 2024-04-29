@@ -74,7 +74,8 @@ const Template1 = () => {
       // RUN API HERE - the inputs are all inside that input object
       //   window.alert(JSON.stringify(details));
       // router.push(data?.thankyou);
-      window.open(data?.thankyou);
+      // window.open(data?.thankyou);
+      window.parent.location.href(data?.thankyou);
 
       return;
     }
