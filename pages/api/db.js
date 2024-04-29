@@ -69,6 +69,7 @@ const Beehiiv = async (email) => {
 };
 
 const fetchIgalfer = async (data) => {
+  console.log(data);
   try {
     const response = await fetch(`https://goatrack.io/api/igalfer`, {
       method: "POST",
