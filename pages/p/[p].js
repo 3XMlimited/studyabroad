@@ -88,7 +88,7 @@ const Template1 = () => {
           background: data?.BackgroundColor ? data?.BackgroundColor : "#d4b65e",
         }}
       >
-        <div className="mb-5 mt-[100px]">
+        <div className="mb-5 mt-[60px]">
           <p
             className="text-center text-[20px] font-semibold"
             style={{ color: data?.Color ? data?.Color : "#000" }}
