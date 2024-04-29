@@ -3,6 +3,7 @@ import { useRouter, usePathname } from "next/navigation";
 const Template1 = () => {
   const [dummy, setDummy] = useState({});
   const [data, setData] = useState({});
+  const [name, setName] = useState("");
   const [details, setDetails] = useState({});
   const [displayErrorMsg, setDisplayErrorMsg] = useState(false);
 
@@ -18,13 +19,14 @@ const Template1 = () => {
     const data = await response.json();
     console.log("Id", data);
     setDummy(data);
+    setName(data.name);
   };
 
   const fetchSubmit = async () => {
     const response = await fetch("/api/db", {
       method: "PATCH",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify({ data: details }),
+      body: JSON.stringify({ data: details, name }),
     });
     const data = await response.json();
     // console.log("Id", data);

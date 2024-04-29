@@ -5,6 +5,7 @@
 // }
 import { MongoClient, ServerApiVersion } from "mongodb";
 import moment from "moment";
+import axios from "axios";
 // import * as dotenv from "dotenv";
 // dotenv.config();
 
@@ -68,24 +69,25 @@ const Beehiiv = async (email) => {
   return true;
 };
 
-const fetchIgalfer = async (data) => {
+const Igalfer = async (data, name) => {
   try {
-    const response = await fetch(`https://goatrack.io/api/igalfer`, {
+    const response = await fetch("http://goatrack.io/api/igalfer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      // later here need to add  limit / page default limit =100
+
       body: JSON.stringify({
         name: data?.FirstName,
         phone: data?.Phone,
-        id: data.name,
+        id: name,
         publisher: "Template",
       }),
     });
     const result = await response.json();
-
+    console.log(result);
     return true;
+
     // res.status(200).json({ result: true });
   } catch (error) {
     console.log(error);
@@ -146,11 +148,11 @@ export default async function handler(req, res) {
     }
   } else if (req.method === "PATCH") {
     // Handle any other HTTP method
-    const { data } = await req.body;
+    const { data, name } = await req.body;
     const id = "cda3dc92-b5bf-11ee-a15c-13cef91ec7d4"; // TOTAL
 
     // test
-    await fetchIgalfer(data);
+    const igalfer = await Igalfer(data, name);
 
     try {
       const response = await fetch(
@@ -172,7 +174,7 @@ export default async function handler(req, res) {
       );
       const result = await response.json();
 
-      // console.log(result);
+      console.log(result);
 
       res.status(200).json({ result: true });
     } catch (error) {
