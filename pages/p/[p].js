@@ -81,7 +81,7 @@ const Template1 = () => {
   };
 
   return (
-    <div className="h-fit w-full">
+    <div className="h-screen w-full bg-white">
       <div
         className="h-fit w-full p-[20px] border-2 border-[#368d54]"
         style={{
