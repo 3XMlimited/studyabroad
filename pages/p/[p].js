@@ -75,7 +75,11 @@ const Template1 = () => {
       //   window.alert(JSON.stringify(details));
       // router.push(data?.thankyou);
       // window.open(data?.thankyou);
-      window.open(data?.thankyou, "_blank");
+      // window.open(data?.thankyou, "_blank");
+      window.parent.postMessage(
+        { action: "openNewTab", url: data?.thankyou },
+        "*"
+      );
 
       return;
     }
