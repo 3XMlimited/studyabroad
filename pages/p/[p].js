@@ -75,7 +75,7 @@ const Template1 = () => {
       //   window.alert(JSON.stringify(details));
       // router.push(data?.thankyou);
       // window.open(data?.thankyou);
-      window.parent.location.href(data?.thankyou);
+      window.open(data?.thankyou, "_blank");
 
       return;
     }
