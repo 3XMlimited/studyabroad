@@ -74,43 +74,17 @@ const Template1 = () => {
       // RUN API HERE - the inputs are all inside that input object
       //   window.alert(JSON.stringify(details));
       // router.push(data?.thankyou);
-      // window.open(data?.thankyou);
+      window.open(data?.thankyou);
       // window.open(data?.thankyou, "_blank");
 
       // return;
 
-      window.parent.postMessage(
-        { action: "openNewTab", url: data?.thankyou },
-        "*"
-      );
+      // window.parent.postMessage(
+      //   { action: "openNewTab", url: data?.thankyou },
+      //   "*"
+      // );
     }
   };
-  useEffect(() => {
-    window.parent.postMessage({ action: "iframeReady" }, "*");
-  }, []);
-  // useEffect(() => {
-  //   // Send message to parent window to signal that the iframe is ready
-  //   window.parent.postMessage({ action: "iframeReady" }, "*");
-
-  //   // Function to handle button click
-  //   const handleButtonClick = async () => {
-  //     // Call fetchSubmit
-  //     // await handleFormSubmit();
-
-  //     // Once fetchSubmit is done, open a new tab
-  //     const url = data?.thankyou; // Change this to your desired URL
-  //     window.parent.postMessage({ action: "openNewTab", url }, "*");
-  //   };
-
-  //   // Add event listener to the button
-  //   const button = document.getElementById("submit");
-  //   button.addEventListener("click", handleButtonClick);
-
-  //   // Cleanup function
-  //   return () => {
-  //     button.removeEventListener("click", handleButtonClick);
-  //   };
-  // }, []);
 
   return (
     <div className="h-screen w-full bg-white">
