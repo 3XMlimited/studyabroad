@@ -85,6 +85,9 @@ const Template1 = () => {
       // );
     }
   };
+  // useEffect(() => {
+  //   window.parent.postMessage({ action: "iframeReady" }, "*");
+  // }, []);
 
   return (
     <div className="h-screen w-full bg-white">
