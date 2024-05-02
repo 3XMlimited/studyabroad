@@ -75,20 +75,21 @@ const Template1 = () => {
       //   window.alert(JSON.stringify(details));
       // router.push(data?.thankyou);
       // window.open(data?.thankyou);
-      window.location.replace(data?.thankyou);
-      // window.open(data?.thankyou, "_blank");
+
+      //
 
       // return;
-
-      // window.parent.postMessage(
-      //   { action: "openNewTab", url: data?.thankyou },
-      //   "*"
-      // );
+      // window.location.replace(data?.thankyou);
+      window.parent.postMessage(
+        { action: "openNewTab", url: data?.thankyou },
+        "*"
+      );
+      window.open(data?.thankyou, "_blank");
     }
   };
-  // useEffect(() => {
-  //   window.parent.postMessage({ action: "iframeReady" }, "*");
-  // }, []);
+  useEffect(() => {
+    window.parent.postMessage({ action: "iframeReady" }, "*");
+  }, []);
 
   return (
     <div className="h-screen w-full bg-white">
