@@ -15,7 +15,7 @@ const page = ({ country }) => {
   country = decodeURIComponent(country);
 
   const countView = async (update) => {
-    const response = await fetch("/api", {
+    const response = await fetch("/api/widget", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
