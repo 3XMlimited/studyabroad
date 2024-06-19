@@ -13,6 +13,23 @@ const page = ({ country }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   country = decodeURIComponent(country);
+
+  const countView = async (update) => {
+    const response = await fetch("/api", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        widget: pathname.split("/")[2],
+        update,
+      }),
+    });
+
+    const result = await response.json();
+    return;
+  };
+
   const fetchData = async () => {
     // console.log("pathname", pathname?.split("/")[2]);
     setIsLoading(true);
@@ -63,6 +80,17 @@ const page = ({ country }) => {
             }
           }
           url = result.url?.url[randomKey];
+          if (result.url.count) {
+            if (result.url.count[`${randomKey}`]) {
+              result.url.count[`${randomKey}`] += 1;
+            } else {
+              result.url.count[`${[randomKey]}`] = 1;
+            }
+          } else {
+            result.url.count = {};
+            result.url.count[`${[randomKey]}`] = 1;
+          }
+          await countView(result.url);
         } else if (result.case.includes("Country")) {
           try {
             url = result.url.url[`${props.searchParams.country}`];
