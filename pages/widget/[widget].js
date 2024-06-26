@@ -2,7 +2,9 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Loading from "@/components/Loading";
+import Image from "next/image";
 
+import logo from "../../public/logo.jpg";
 export const getServerSideProps = ({ query }) => ({
   props: query,
 });
@@ -115,7 +117,7 @@ const page = ({ country }) => {
           setIsLoading(false);
           //   console.log(url);
           if (url !== undefined) {
-            window.location.assign(result);
+            if (url.includes("http")) window.location.assign(result);
           }
 
           return;
@@ -135,6 +137,13 @@ const page = ({ country }) => {
       <div className="wrapper1">
         <div className="wrapper2">
           <div className="wrapper3">
+            <div className="h-full flex items-center">
+              <Image
+                src={logo}
+                alt="logo"
+                className="h-full min-w-[60px] w-[60px] mt-2"
+              />
+            </div>
             {isLoading ? (
               <Loading text={"Loading"} />
             ) : (
