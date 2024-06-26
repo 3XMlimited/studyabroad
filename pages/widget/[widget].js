@@ -13,6 +13,7 @@ const page = ({ country }) => {
   //   console.log("2", props.searchParams.country);
   const pathname = usePathname();
   const [data, setData] = useState([]);
+  const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   country = decodeURIComponent(country);
 
@@ -54,7 +55,7 @@ const page = ({ country }) => {
         });
 
         const result = await response.json();
-
+        console.log(result);
         if (result) {
           // console.log("1", result);
           // console.log(result);
@@ -112,13 +113,25 @@ const page = ({ country }) => {
           //     console.log(error);
           //   }
           // }
-
-          setData(result);
           setIsLoading(false);
-          //   console.log(url);
-          if (url !== undefined) {
-            if (url.includes("http")) window.location.assign(result);
+          if (result.img) {
+            setImage(result.img);
+            if (result.url) {
+              if (result.url.includes("http"))
+                window.location.assign(result.url);
+            }
+          } else {
+            {
+              if (result.includes("http")) window.location.assign(result);
+            }
           }
+
+          // setData(result);
+
+          //   console.log(url);
+          // if (url !== undefined) {
+          //   if (url.includes("http")) window.location.assign(result);
+          // }
 
           return;
         }
@@ -138,11 +151,15 @@ const page = ({ country }) => {
         <div className="wrapper2">
           <div className="wrapper3">
             <div className="h-full flex items-center">
-              <Image
-                src={logo}
-                alt="logo"
-                className="h-full min-w-[60px] w-[60px] mt-2"
-              />
+              {image && (
+                <Image
+                  src={image}
+                  alt="logo"
+                  width={60}
+                  height={60}
+                  className="h-full min-w-[60px] w-[60px] mt-2"
+                />
+              )}
             </div>
             {isLoading ? (
               <Loading text={"Loading"} />

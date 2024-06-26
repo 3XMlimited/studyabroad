@@ -69,6 +69,8 @@ const randomUrl = async (result, country) => {
       result.url.count = {};
       result.url.count[`${[randomKey]}`] = 1;
     }
+    await countView("Market_V2", "indexes", result, { url: result.url });
+    return url;
   } else if (result.case.includes("Country")) {
     try {
       url = result.url.url[`${country}`];
@@ -89,12 +91,20 @@ const randomUrl = async (result, country) => {
     } catch (error) {
       console.log(error);
     }
+    await countView("Market_V2", "indexes", result, { url: result.url });
+    return url;
+  } else if (result.case === "Post Creation") {
+    if (result.count) {
+      result.count = result.count + 1;
+    } else {
+      result.count = 1;
+    }
+    await countView("Market_V2", "indexes", result, { count: result.count });
+    return { url: result.final_url, img: result.picture[0] };
   }
-  await countView("Market_V2", "indexes", result);
-  return url;
 };
 
-export const countView = async (db_name, collection_name, update) => {
+export const countView = async (db_name, collection_name, update, url) => {
   const client = new MongoClient(process.env.MONGODB_URL, {
     serverApi: {
       version: ServerApiVersion.v1,
@@ -112,7 +122,7 @@ export const countView = async (db_name, collection_name, update) => {
     let result = await collection.updateOne(
       { widget: update.widget },
       {
-        $set: { url: update.url },
+        $set: url,
       }
     );
 
