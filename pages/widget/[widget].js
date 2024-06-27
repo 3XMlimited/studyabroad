@@ -134,7 +134,7 @@ const page = ({ country }) => {
             <div className="h-screen flex items-center relative">
               <div className="absolute top-[35%] left-[110%]">
                 <Image
-                  src={`/uploads/122007.jpg`}
+                  src={`/uploads/${pathname?.split("/")[2]}.jpg`}
                   // src={logo}
                   alt="logo"
                   width={220}
