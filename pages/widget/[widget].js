@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Loading from "@/components/Loading";
 import Image from "next/image";
 
-import logo from "../../public/logo.jpg";
+// import logo from "../../public/uploads/"+pathname?.split("/")[2];
 export const getServerSideProps = ({ query }) => ({
   props: query,
 });
@@ -114,17 +114,14 @@ const page = ({ country }) => {
           //   }
           // }
           setIsLoading(false);
-          if (result.img) {
-            setImage(result.img);
-            if (result.url) {
-              if (result.url.includes("http"))
-                window.location.assign(result.url);
-            }
-          } else {
-            {
-              if (result.includes("http")) window.location.assign(result);
-            }
-          }
+          // if (result.includes("http")) window.location.assign(result);
+          // if (result.url) {
+          //   if (result.url.includes("http")) window.location.assign(result.url);
+          // } else {
+          //   {
+          //     if (result.includes("http")) window.location.assign(result);
+          //   }
+          // }
 
           // setData(result);
 
@@ -150,24 +147,25 @@ const page = ({ country }) => {
       <div className="wrapper1">
         <div className="wrapper2">
           <div className="wrapper3">
-            <div className="h-full flex items-center">
-              {image && (
+            <div className="h-screen flex items-center relative">
+              <div className="absolute top-[35%] left-[110%]">
                 <Image
-                  src={image}
+                  src={`/uploads/122007.jpg`}
+                  // src={logo}
                   alt="logo"
-                  width={60}
-                  height={60}
-                  className="h-full min-w-[60px] w-[60px] mt-2"
+                  width={220}
+                  height={220}
+                  className=" ml-[50px] "
                 />
-              )}
-            </div>
-            {isLoading ? (
-              <Loading text={"Loading"} />
-            ) : (
-              <div>
-                <p className="text-red-500 "></p>
+                {isLoading ? (
+                  <Loading text={"Loading"} />
+                ) : (
+                  <div>
+                    <p className="text-red-500 "></p>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>

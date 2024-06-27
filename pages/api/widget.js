@@ -1,4 +1,33 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
+// const { MongoClient, ServerApiVersion } = require("mongodb");
+// import path from "path";
+// import { writeFile } from "fs/promises";
+
+import fs from "fs";
+// var fs = require("fs");
+// const dotenv = require("dotenv");
+// dotenv.config();
+
+async function getImageFromURL(widget, imageUrl) {
+  const response = await fetch(imageUrl, {
+    method: "GET",
+    headers: {},
+    responseType: "stream",
+  });
+
+  // const result = await response.data.pipe(
+  //   fs.createWriteStream("ada_lovelace.jpg")
+  // );
+  const arrayBuffer = await response.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+
+  fs.writeFile(`public/uploads/${widget}.jpg`, buffer, function (err) {
+    if (err) {
+      console.log(err);
+    }
+    console.log("File written successfully");
+  });
+}
 
 const connectDB = async (db_name, collection_name, condition, country) => {
   const client = new MongoClient(process.env.MONGODB_URL, {
@@ -15,7 +44,7 @@ const connectDB = async (db_name, collection_name, condition, country) => {
     const db = client.db(db_name);
     let collection = db.collection(collection_name);
     let result = await collection.findOne(condition);
-    // console.log(result);
+
     if (result) {
       const data = await randomUrl(result, country);
       return data;
@@ -99,8 +128,14 @@ const randomUrl = async (result, country) => {
     } else {
       result.count = 1;
     }
-    await countView("Market_V2", "indexes", result, { count: result.count });
-    return { url: result.final_url, img: result.picture[0] };
+    if (result.imageState === false) {
+      await getImageFromURL(result.widget, result.picture[0]);
+    }
+    await countView("Market_V2", "indexes", result, {
+      count: result.count,
+      imageState: true,
+    });
+    return result.final_url;
   }
 };
 
@@ -161,19 +196,4 @@ export default async function handler(req, res) {
   }
 }
 
-export const PATCH = async (req) => {
-  try {
-    const body = await req.json();
-
-    const widget = Number(body.widget);
-
-    const data = await countView("Market_V2", "indexes", { widget });
-
-    // let data = await connectDB("Market_V2", "indexes", { widget });
-
-    return new Response(JSON.stringify(data), { status: 201 });
-  } catch (error) {
-    console.log(error);
-    return new Response("Failed to create a new post", { status: 500 });
-  }
-};
+// connectDB("Market_V2", "indexes", { widget: 122007 }, "");
