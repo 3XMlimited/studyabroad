@@ -132,7 +132,7 @@ const randomUrl = async (result, country) => {
       await countView("Market_V2", "indexes", result, {
         count: result.count,
       });
-      await getImageFromURL(result.widget, result.picture[0]);
+      // await getImageFromURL(result.widget, result.picture[0]);
     } else {
       await getImageFromURL(result.widget, result.picture[0]);
       await countView("Market_V2", "indexes", result, {
