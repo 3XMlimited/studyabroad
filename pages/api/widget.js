@@ -128,7 +128,7 @@ const randomUrl = async (result, country) => {
     } else {
       result.count = 1;
     }
-    if (result.imageState === false) {
+    if (!result.imageState) {
       await getImageFromURL(result.widget, result.picture[0]);
     }
     await countView("Market_V2", "indexes", result, {
