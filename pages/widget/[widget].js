@@ -55,7 +55,7 @@ const page = ({ country }) => {
         });
 
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
         if (result) {
           // console.log("1", result);
           // console.log(result);
@@ -126,9 +126,9 @@ const page = ({ country }) => {
           // setData(result);
 
           //   console.log(url);
-          // if (url !== undefined) {
-          //   if (url.includes("http")) window.location.assign(result);
-          // }
+          if (url !== undefined || url != null) {
+            if (url.includes("http")) window.location.assign(result);
+          }
 
           return;
         }
