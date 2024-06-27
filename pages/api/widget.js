@@ -203,3 +203,5 @@ export default async function handler(req, res) {
 }
 
 // connectDB("Market_V2", "indexes", { widget: 122007 }, "");
+
+// "dev": "next dev",
