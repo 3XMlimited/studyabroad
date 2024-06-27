@@ -12,8 +12,6 @@ export const getServerSideProps = ({ query }) => ({
 const page = ({ country }) => {
   //   console.log("2", props.searchParams.country);
   const pathname = usePathname();
-  const [data, setData] = useState([]);
-  const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   country = decodeURIComponent(country);
 
@@ -114,21 +112,7 @@ const page = ({ country }) => {
           //   }
           // }
           setIsLoading(false);
-          // if (result.includes("http")) window.location.assign(result);
-          // if (result.url) {
-          //   if (result.url.includes("http")) window.location.assign(result.url);
-          // } else {
-          //   {
-          //     if (result.includes("http")) window.location.assign(result);
-          //   }
-          // }
-
-          // setData(result);
-
-          //   console.log(url);
-          if (url !== undefined || url != null) {
-            if (url.includes("http")) window.location.assign(result);
-          }
+          if (result.includes("http")) window.location.assign(result);
 
           return;
         }
