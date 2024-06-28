@@ -20,7 +20,7 @@ async function getImageFromURL(widget, imageUrl) {
   // );
   const arrayBuffer = await response.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
-
+  console.log(buffer);
   fs.writeFile(`public/uploads/${widget}.jpg`, buffer, function (err) {
     if (err) {
       console.log(err);
