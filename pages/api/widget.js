@@ -26,14 +26,28 @@ async function getImageFromURL(widget, imageUrl) {
     if (err) {
       console.log(err);
     }
-    // else {
-    // countView("Market_V2", "indexes", result, {
-    //   imageState: true,
-    // });
-    // }
+
     console.log("File written successfully");
   });
 }
+const fetchImageServer = async (widget, imageUrl) => {
+  // console.log(widget, imageUrl);
+  const url =
+    "http://127.0.0.1:5001?" +
+    new URLSearchParams({
+      widget,
+      imageUrl,
+    }).toString();
+
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const result = await response.json();
+  console.log(result);
+};
 
 const connectDB = async (db_name, collection_name, condition, country) => {
   const client = new MongoClient(process.env.MONGODB_URL, {
@@ -134,19 +148,19 @@ const randomUrl = async (result, country) => {
     } else {
       result.count = 1;
     }
-    // if (result.imageState) {
-    //   await countView("Market_V2", "indexes", result, {
-    //     count: result.count,
-    //   });
+    if (result.imageState) {
+      await countView("Market_V2", "indexes", result, {
+        count: result.count,
+      });
+    } else {
+      console.log("start saving image ...");
 
-    // } else {
-    console.log("start saving image ...");
-    await getImageFromURL(result.widget, result.picture[0]);
-    await countView("Market_V2", "indexes", result, {
-      count: result.count,
-      // imageState: true,
-    });
-    // }
+      await fetchImageServer(result.widget, result.picture[0]);
+      await countView("Market_V2", "indexes", result, {
+        count: result.count,
+        imageState: true,
+      });
+    }
 
     return result.final_url;
   }
