@@ -25,6 +25,11 @@ async function getImageFromURL(widget, imageUrl) {
     if (err) {
       console.log(err);
     }
+    // else {
+    // countView("Market_V2", "indexes", result, {
+    //   imageState: true,
+    // });
+    // }
     console.log("File written successfully");
   });
 }
@@ -128,18 +133,18 @@ const randomUrl = async (result, country) => {
     } else {
       result.count = 1;
     }
-    if (result.imageState) {
-      await countView("Market_V2", "indexes", result, {
-        count: result.count,
-      });
-      // await getImageFromURL(result.widget, result.picture[0]);
-    } else {
-      await getImageFromURL(result.widget, result.picture[0]);
-      await countView("Market_V2", "indexes", result, {
-        count: result.count,
-        imageState: true,
-      });
-    }
+    // if (result.imageState) {
+    //   await countView("Market_V2", "indexes", result, {
+    //     count: result.count,
+    //   });
+
+    // } else {
+    await getImageFromURL(result.widget, result.picture[0]);
+    await countView("Market_V2", "indexes", result, {
+      count: result.count,
+      // imageState: true,
+    });
+    // }
 
     return result.final_url;
   }
@@ -205,3 +210,18 @@ export default async function handler(req, res) {
 // connectDB("Market_V2", "indexes", { widget: 122007 }, "");
 
 // "dev": "next dev",
+
+// server {
+//         listen 80;
+//         server_name 18.163.193.85;
+
+//         location / {
+//                 proxy_pass http://127.0.0.1:3000;
+//                 proxy_http_version 1.1;
+//                 proxy_set_header Upgrade $http_upgrade;
+//                 proxy_set_header Connection "upgrade";
+//                 proxy_set_header Host $hsot;
+//                 proxy_cache_bypass $http_upgrade;
+//         }
+
+// }
