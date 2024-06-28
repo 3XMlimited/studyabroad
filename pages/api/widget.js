@@ -9,6 +9,7 @@ import fs from "fs";
 // dotenv.config();
 
 async function getImageFromURL(widget, imageUrl) {
+  console.log("widget", widget, imageUrl);
   const response = await fetch(imageUrl, {
     method: "GET",
     headers: {},
@@ -139,6 +140,7 @@ const randomUrl = async (result, country) => {
     //   });
 
     // } else {
+    console.log("start saving image ...");
     await getImageFromURL(result.widget, result.picture[0]);
     await countView("Market_V2", "indexes", result, {
       count: result.count,
