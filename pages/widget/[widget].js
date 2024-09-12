@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Loading from "@/components/Loading";
-import Image from "next/image";
+// import Image from "next/image";
 
 // import logo from "../../public/uploads/"+pathname?.split("/")[2];
 export const getServerSideProps = ({ query }) => ({
@@ -133,14 +133,14 @@ const page = ({ country }) => {
           <div className="wrapper3">
             <div className="h-screen flex items-center relative">
               <div className="absolute top-[35%] left-[110%]">
-                <Image
+                {/* <Image
                   src={`/uploads/${pathname?.split("/")[2]}.jpg`}
                   // src={logo}
                   alt="logo"
                   width={220}
                   height={220}
                   className=" ml-[55px]"
-                />
+                /> */}
                 {isLoading ? (
                   <Loading text={"Loading"} />
                 ) : (
