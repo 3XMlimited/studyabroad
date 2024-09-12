@@ -139,7 +139,7 @@ const page = ({ country }) => {
                   alt="logo"
                   width={220}
                   height={220}
-                  className=" ml-[55px] "
+                  className=" ml-[55px]"
                 />
                 {isLoading ? (
                   <Loading text={"Loading"} />

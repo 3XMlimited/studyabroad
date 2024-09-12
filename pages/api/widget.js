@@ -210,7 +210,17 @@ export default async function handler(req, res) {
       const widget = Number(body?.widget);
       const country = body.country;
       console.log(country);
-      let data = await connectDB("Market_V2", "indexes", { widget }, country);
+
+      let response = await fetch("https://goatrack.io/api/esquiz/widget", {
+        method: "POST",
+        body: JSON.stringify({
+          widget,
+          country,
+        }),
+      });
+      let data = await response.json();
+      console.log(data);
+      // let data = await connectDB("Market_V2", "indexes", { widget }, country);
 
       // const result = await randomUrl(data);
 
