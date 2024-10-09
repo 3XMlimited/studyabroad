@@ -75,7 +75,8 @@ const page = ({ country }) => {
       } catch (error) {
         console.log(error);
       }
-      window.open("/thankyou");
+      // window.open("/thankyou");
+      window.open(data?.domains_url?.[0]);
     } else {
       setErrorMsg("Invalid email");
     }
@@ -191,17 +192,25 @@ const page = ({ country }) => {
           <div className="h-full w-full bg-white flex items-center justify-center px-[20px]">
             <div className="h-full w-full max-w-[1200px] flex flex-col items-center justify-center border-t border-t-gray-300 divide-y-2">
               <div className="h-fit w-full flex items-center justify-between gap-2.5 py-5">
-                <Link href={'/home/privacy-policy'} className="text-sm font-semibold cursor-pointer hover:opacity-50">Privacy Policy</Link>
-                <Link href={'/home/contact'} className="text-sm font-semibold cursor-pointer hover:opacity-50">Contact</Link>
+                <Link
+                  href={"/home/privacy-policy"}
+                  className="text-sm font-semibold cursor-pointer hover:opacity-50"
+                >
+                  Privacy Policy
+                </Link>
+                <Link
+                  href={"/home/contact"}
+                  className="text-sm font-semibold cursor-pointer hover:opacity-50"
+                >
+                  Contact
+                </Link>
                 <p className="text-sm font-semibold text-black text-center">
                   2024 © esquiz All rights reserved
                 </p>
               </div>
 
               <div className="text-[12px]">
-                <p className="font-semibold mt-[10px]">
-                  Disclaimer
-                </p>
+                <p className="font-semibold mt-[10px]">Disclaimer</p>
                 <p className="text-[10px] text-justify">
                   The information provided on this website is for general
                   informational purposes only and is not a substitute for
