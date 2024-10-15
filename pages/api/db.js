@@ -48,8 +48,10 @@ const connectDB = async (db_name, collection_name, data) => {
 };
 
 const Beehiiv = async (email) => {
+  // pub_1d2935ed-9327-464a-b360-850e04146855
+  // pub_b6f880b1-9806-4df9-8956-e838eabed16e/
   const response = await fetch(
-    "https://api.beehiiv.com/v2/publications/pub_b6f880b1-9806-4df9-8956-e838eabed16e/subscriptions",
+    "https://api.beehiiv.com/v2/publications/pub_1d2935ed-9327-464a-b360-850e04146855/subscriptions",
 
     {
       method: "POST",
