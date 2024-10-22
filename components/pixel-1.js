@@ -37,6 +37,9 @@ export default () => (
                  <img height="1" width="1" style="display:none"
                     src="https://www.facebook.com/tr?id=6639384919216971&ev=PageView&noscript=1"
                 />
+                    <img height="1" width="1" style="display:none"
+                    src="https://www.facebook.com/tr?id=470924325983613&ev=PageView&noscript=1"
+                />
                 `,
       }}
     />
